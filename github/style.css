@@ -1,0 +1,198 @@
+html, body {
+    scroll-behavior: smooth;
+    background-color: #f5f1e8; 
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font-family: Georgia, serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-y: hidden; 
+}
+
+header {
+    background-color: #fffaf3; 
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #e4d8c4; 
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 400;
+    color: #2e4a62; 
+}
+
+nav {
+    background-color: #f9f6f0; 
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin: 0;
+    list-style-type: none; /* Remove bullet points from main menu */
+}
+
+.menu > li {
+    position: relative;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #2e4a62; 
+    transition: background-color 0.3s ease;
+}
+
+.menu > li:hover {
+    background-color: #e9dfd1; 
+}
+
+.submenu {
+    display: none; 
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: #f9f6f0; 
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    z-index: 1000; 
+}
+
+.menu > li:hover .submenu {
+    display: block; 
+}
+
+.submenu {
+    list-style-type: none; /* Remove bullet points from submenu */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.submenu li {
+    padding: 5px 20px;
+}
+
+.submenu li a {
+    color: #2e4a62; 
+    text-decoration: none;
+    display: block;
+}
+
+.submenu li a:hover {
+    background-color: #e9dfd1; 
+}
+
+.banner {
+    width: 1100px;
+    height: 250px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #d0e6f1; 
+    border: 2px solid #c9c2b5; 
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #faf9f6; 
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow-x: auto; 
+    margin-top: 20px;
+}
+
+.column {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    background-color: #ffffff; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); 
+    max-width: 33%;
+    border: 1px solid #e0ddd4; 
+}
+
+.column h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #4b6174; 
+}
+
+.column ul {
+    list-style-type: none; /* Remove bullet points from column lists */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.column ul li {
+    margin-bottom: 10px;
+}
+
+.column ul li a {
+    text-decoration: none;
+    color: #2e4a62; 
+    padding: 10px;
+    background-color: #f3ece4; 
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.column ul li a:hover {
+    background-color: #e9dfd1; 
+}
+
+.column:last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fffaf3; 
+    border-top: 2px solid #e4d8c4;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+footer p {
+    margin: 0;
+    color: #2e4a62; 
+}
+
+@media (max-width: 1200px) {
+    .flex-container {
+        flex-wrap: wrap;
+    }
+    
+    .column {
+        max-width: 100%;
+        margin: 10px 0;
+    }
+}
