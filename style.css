@@ -39,7 +39,7 @@ nav {
     justify-content: center;
     padding: 10px 0;
     margin: 0;
-    list-style-type: none; /* Remove bullet points from main menu */
+    list-style-type: none; 
 }
 
 .menu > li {
@@ -71,9 +71,9 @@ nav {
 }
 
 .submenu {
-    list-style-type: none; /* Remove bullet points from submenu */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
 }
 
 .submenu li {

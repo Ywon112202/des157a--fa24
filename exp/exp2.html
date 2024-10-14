@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 2- JS Experimentation - Functions & DOM</title>
+</head>
+<body>
+
+    <h1>Welcome to the Color Guessing Game!</h1>
+    <h2 id="result"></h2>
+
+    <script>
+       
+        
+        
+        const colors = ["red", "yellow", "green", "blue"];
+
+        
+        function getRandomColor() {
+            const randomIndex = Math.floor(Math.random() * colors.length);
+            return colors[randomIndex];
+        }
+
+      
+        function startGame() {
+            const userColor = prompt("Guess a color: red, yellow, green, or blue").toLowerCase();
+            const randomColor = getRandomColor();
+            
+            if (userColor === randomColor) {
+                document.getElementById('result').textContent = "You are right!";
+                document.body.style.backgroundColor = randomColor; 
+            } else {
+                document.getElementById('result').textContent = `Try again! The color was ${randomColor}.`;
+            }
+        }
+
+        startGame();
+    </script>
+</body>
+</html>
+
+    
+</body>
+</html>
