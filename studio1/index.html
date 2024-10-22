@@ -6,18 +6,38 @@
     <link href="style.css" rel="stylesheet">
     <script src="script.js" defer></script>
     
-    <title>Mad lips</title>
-
+    <title>Mad Lips</title>
 </head>
 <body>
+    <header>
+        <img src="image/screenshot.png" alt="example">
+        <h1>Mad Lips</h1>
+    </header>
 
-    <img src="image/screenshot.png" alt="example">
-    
-    <h1>Mad Lips</h1>
-       
-    <p>Once upon a time, in a distant land, there was a _____________ (adj and noun) who loved _____________ (verb ending with “ing”). One day, it decided to go on an adventure to the _______________ (noun) . Along the way, the _____________ (adj and noun) became very hungry and decided to stop for some ______________ (noun) . It was the best meal it had ever had! After that, the _____________ (noun) continued its journey, happily ______________ (verb ending with “ing”) all the way __________ (noun) . What a fun day for the _____________(adj and noun) !</p>
+    <main>
+        <p>Once upon a time, in a distant land, there was a _____________ (adj and noun) who loved _____________ (verb ending with “ing”). One day, it decided to go on an adventure to the _______________ (noun). Along the way, the _____________ (adj and noun) became very hungry and decided to stop for some ______________ (noun). It was the best meal it had ever had! After that, the _____________ (noun) continued its journey, happily ______________ (verb ending with “ing”) all the way __________ (noun). What a fun day for the _____________(adj and noun)!</p>
 
+        <form>
+            <label for="adjNoun">Adjective and Noun:</label>
+            <input type="text" id="adjNoun" required>
 
-    
+            <label for="verb">Verb (ending with “ing”):</label>
+            <input type="text" id="verb" required>
+
+            <label for="noun1">First Noun:</label>
+            <input type="text" id="noun1" required>
+
+            <label for="adjNoun2">Second Adjective and Noun:</label>
+            <input type="text" id="adjNoun2" required>
+
+            <label for="food">Food:</label>
+            <input type="text" id="food" required>
+
+            <label for="noun2">Second Noun:</label>
+            <input type="text" id="noun2" required>
+
+            <input type="submit" value="Submit">
+        </form>
+    </main>
 </body>
 </html>
