@@ -3,7 +3,6 @@
     console.log("reading js");
 
     // Elements for opening and closing overlay
-    const openBtn = document.querySelector('.open');
     const closeBtn = document.querySelector('.close');
     const overlay = document.getElementById('overlay');
 
@@ -16,9 +15,8 @@
     const noun2 = document.getElementById('noun2');
     const storyOutput = document.getElementById('storyOutput');
 
-    // Open overlay
-    openBtn.addEventListener('click', function(event) {
-        event.preventDefault();
+    // Show overlay on page load
+    window.addEventListener('load', function() {
         overlay.classList.add('visible');
     });
 
@@ -42,3 +40,4 @@
         overlay.classList.remove('visible');
     });
 })();
+
