@@ -113,6 +113,11 @@ input[type="submit"]:hover {
     display: none;
 }
 
+.showing {
+    visibility: visible;
+    opacity: 1;
+}
+
 @media (max-width: 600px) {
     h1 {
         font-size: 2em; 
