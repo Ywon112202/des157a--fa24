@@ -12,24 +12,21 @@ html, body {
 }
 
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px; /* Adds space between images */
+    text-align: center; 
     margin-bottom: 20px; 
 }
 
-header img {
-    max-width: 20%; /* Adjust to fit all images in one row */
+img {
+    max-width: 100%; 
     height: auto; 
-    border-radius: 10px;
+    border-radius: 10px; 
+    margin-top: 20px; 
 }
 
 h1 {
     font-size: 2.5em; 
     color: #f44336; 
     margin: 20px 0; 
-    text-align: center;
 }
 
 main {
@@ -82,6 +79,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #303f9f; 
 }
+
 
 #overlay {
     position: fixed;
