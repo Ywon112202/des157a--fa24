@@ -8,6 +8,7 @@ body {
     align-items: center;
     height: 100vh; /* Full height */
     justify-content: center; /* Vertically center */
+    overflow: hidden;
 }
 
 h1 {
@@ -24,13 +25,16 @@ h1 {
     display: flex;
     position: relative;
     height: 200px;
+    width: 100%;
     overflow: hidden;
-    justify-content: center; /* Horizontally center slider content */
+    justify-content: flex-start; /* Align images to the left */
+    transition: transform 0.3s ease;
 }
 
 .slider .a {
     display: flex;
     flex-wrap: nowrap;
+    transition: transform 0.3s ease;
 }
 
 .image-container {
@@ -68,8 +72,8 @@ h1 {
 }
 
 @keyframes moveSlider {
-    from { left: 0; }
-    to { left: var(--sliderwidth); }
+    from { transform: translateX(0); }
+    to { transform: translateX(var(--sliderwidth)); }
 }
 
 .animate {
@@ -78,4 +82,5 @@ h1 {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
+
 
