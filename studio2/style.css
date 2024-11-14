@@ -1,4 +1,4 @@
-
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -7,65 +7,58 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f5f5dc; 
-    color: #333;
+    background-color: #f5f5dc; /* Beige background */
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    text-align: center;
     overflow: hidden;
 }
 
 h1 {
     margin-top: 20px;
     font-weight: 700;
+    text-align: center;
 }
 
 .slider {
     display: flex;
     overflow: hidden;
-    width: 80%; 
+    width: 80%;
     max-width: 600px;
     position: relative;
     margin: auto;
 }
 
-
+/* Container for sliding images */
 .a, .b {
     display: flex;
-    flex-shrink: 0;
-    width: 100%;
 }
 
 .image {
     width: 100%;
     height: auto;
-    transition: transform 0.5s ease;
 }
 
-
+/* Keyframe for continuous scroll */
 @keyframes scroll {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(var(--sliderwidth));
+        transform: translateX(var(--slider-width));
     }
 }
 
+/* Applying the animation */
 .slider.animate .a,
 .slider.animate .b {
     animation: scroll 20s linear infinite;
 }
 
-
 footer {
-    margin-top: 20px;
-    padding: 10px 0;
-    background-color: #333;
-    color: #fff;
-    font-size: 0.9rem;
-    width: 100%;
     text-align: center;
+    padding: 10px 0;
+    color: #333;
+    font-size: 0.9rem;
 }

@@ -1,27 +1,22 @@
 (function () {
     "use strict";
-    console.log("Reading JavaScript file");
+    console.log("Reading JS");
 
     window.addEventListener('load', function () {
         const sliderContent = document.querySelector('.a');
-        if (!sliderContent) {
-            console.error("Slider content not found");
-            return;
-        }
+        const slider = document.querySelector('.slider');
 
-        const sliderWidth = sliderContent.offsetWidth;
-
-
+        // Clone the slider content
         const cloned = sliderContent.cloneNode(true);
         cloned.classList.add("b");
-        document.querySelector('.slider').appendChild(cloned);
+        slider.appendChild(cloned);
 
+        // Get the width of the slider content for animation
+        const sliderWidth = sliderContent.offsetWidth;
+        document.documentElement.style.setProperty('--slider-width', `${-sliderWidth}px`);
 
-        const root = document.documentElement;
-        const endLeftPos = `-${sliderWidth}px`;
-        root.style.setProperty('--sliderwidth', endLeftPos);
-
-
-        document.querySelector('.slider').classList.add("animate");
+        // Add the animation class
+        slider.classList.add("animate");
     });
+
 })();
