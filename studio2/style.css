@@ -1,3 +1,4 @@
+/* Body styling */
 body {
     margin: 0;
     padding: 0;
@@ -6,70 +7,75 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
 }
 
+/* Header styling */
 h1 {
     margin-top: 20px;
     text-align: center;
 }
 
+/* Section container */
 #one {
     width: 100%;
     overflow: hidden;
 }
 
+/* Slider container */
 .slider {
     display: flex;
-    position: relative;
-    height: 200px;
+    height: 300px;
     overflow: hidden;
-    justify-content: flex-start;
     transition: transform 0.3s ease;
+    position: relative;
 }
 
-.slider .a, .slider .b {
-    display: flex;
-    flex-wrap: nowrap;
-}
-
+/* Individual image container */
 .image-container {
     position: relative;
-    display: inline-block;
+    width: 700px;
+    height: 300px;
     margin-right: 10px;
+    flex-shrink: 0;
 }
 
+/* Image styling */
 .image-container .image {
-    width: 300px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
+/* Hover effect for scaling image */
 .image-container:hover .image {
     transform: scale(1.1);
 }
 
+/* Description styling */
 .image-container .description {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white; /* Updated to white */
-    color: black; /* Updated to black */
+    background: white;
+    color: black;
     padding: 10px;
     font-size: 16px;
     display: none;
     z-index: 1;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional for styling */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Display description on hover */
 .image-container:hover .description {
     display: block;
 }
 
+/* Modal image styling */
 .modal-content {
     margin: auto;
     display: block;
@@ -77,6 +83,7 @@ h1 {
     max-width: 700px;
 }
 
+/* Modal description styling */
 .modal-content-description {
     text-align: center;
     color: black;
@@ -84,14 +91,15 @@ h1 {
     padding: 10px;
     font-size: 16px;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Close button styling */
 .close {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 30px;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
     font-weight: bold;
     color: black;
     background-color: white;
@@ -103,12 +111,14 @@ h1 {
     z-index: 2;
 }
 
+/* Close button hover effect */
 .close:hover,
 .close:focus {
     color: red;
     cursor: pointer;
 }
 
+/* Animation for the slider */
 @keyframes moveSlider {
     from { transform: translateX(0); }
     to { transform: translateX(-100%); }
@@ -120,4 +130,5 @@ h1 {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
+
 

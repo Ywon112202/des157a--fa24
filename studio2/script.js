@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    console.log("reading js");
+    console.log("Reading JS");
 
     window.addEventListener('load', function () {
         // Slider setup
@@ -54,7 +54,7 @@
 
         images.forEach(image => {
             image.addEventListener('click', function() {
-                modal.style.display = 'block';
+                modal.style.display = 'flex'; // Center modal
                 modalContent.src = image.src;
                 const descriptionText = image.closest('.image-container').querySelector('.description').textContent;
                 modalDescription.textContent = descriptionText; // Display description in modal
@@ -76,7 +76,6 @@
         });
     });
 })();
-
 
 
 
