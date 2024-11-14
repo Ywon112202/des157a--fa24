@@ -6,9 +6,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh; /* Full height */
-    justify-content: center; /* Vertically center */
-    overflow: hidden;
+    height: 100vh;
+    justify-content: center;
 }
 
 h1 {
@@ -18,23 +17,21 @@ h1 {
 
 #one {
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .slider {
     display: flex;
     position: relative;
     height: 200px;
-    width: 100%;
     overflow: hidden;
-    justify-content: flex-start; /* Align images to the left */
+    justify-content: flex-start;
     transition: transform 0.3s ease;
 }
 
-.slider .a {
+.slider .a, .slider .b {
     display: flex;
     flex-wrap: nowrap;
-    transition: transform 0.3s ease;
 }
 
 .image-container {
@@ -71,9 +68,54 @@ h1 {
     display: block;
 }
 
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    overflow: auto;
+}
+
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%; 
+    max-width: 700px; 
+}
+
+
+.close {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 2; 
+}
+
+.close:hover,
+.close:focus {
+    color: red; 
+    text-decoration: none;
+    cursor: pointer;
+}
+
 @keyframes moveSlider {
     from { transform: translateX(0); }
-    to { transform: translateX(var(--sliderwidth)); }
+    to { transform: translateX(-100%); }
 }
 
 .animate {
@@ -82,5 +124,4 @@ h1 {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
-
 
