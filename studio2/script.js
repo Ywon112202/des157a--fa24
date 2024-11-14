@@ -30,27 +30,49 @@
                 const description = container.querySelector('.description');
                 description.style.display = 'none';
             });
+        });
 
-            container.addEventListener('click', function() {
-                const img = container.querySelector('.image');
-                const modal = document.getElementById('modal');
-                const modalImg = document.getElementById('modalImage');
-                const caption = document.getElementById('caption');
-                
+        // Image click to show in modal
+        const images = document.querySelectorAll('.image-container .image');
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        document.body.appendChild(modal);
+
+        const modalContent = document.createElement('img');
+        modalContent.classList.add('modal-content');
+        modal.appendChild(modalContent);
+
+        const modalDescription = document.createElement('div');
+        modalDescription.classList.add('modal-content-description');
+        modal.appendChild(modalDescription);
+
+        const closeButton = document.createElement('button');
+        closeButton.classList.add('close');
+        closeButton.textContent = 'X';
+        modal.appendChild(closeButton);
+
+        images.forEach(image => {
+            image.addEventListener('click', function() {
                 modal.style.display = 'block';
-                modalImg.src = img.src;
-                caption.innerHTML = container.querySelector('.description').innerHTML;
+                modalContent.src = image.src;
+                const descriptionText = image.closest('.image-container').querySelector('.description').textContent;
+                modalDescription.textContent = descriptionText; // Display description in modal
             });
         });
 
-
-        const closeBtn = document.querySelector('.close');
-        closeBtn.addEventListener('click', function() {
-            const modal = document.getElementById('modal');
+        closeButton.addEventListener('click', function() {
             modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside the image
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
         });
     });
 })();
+
 
 
 
