@@ -11,16 +11,54 @@
 
         const sliderWidth = sliderContent.scrollWidth;
     
-
+        // Clone the slider content for the looping effect
         const cloned = sliderContent.cloneNode(true);
         cloned.className = "b";
         document.querySelector('.slider').appendChild(cloned);
 
-
+        // Set the necessary width for the slider container
         document.documentElement.style.setProperty('--sliderwidth', `${sliderWidth}px`);
 
-
+        // Apply animation class to start the slider
         document.querySelector('.slider').classList.add("animate");
+
+        // Image click to show in modal
+        const images = document.querySelectorAll('.image-container .image');
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        document.body.appendChild(modal);
+
+        const modalContent = document.createElement('img');
+        modalContent.classList.add('modal-content');
+        modal.appendChild(modalContent);
+
+        const modalDescription = document.createElement('div');
+        modalDescription.classList.add('modal-content-description');
+        modal.appendChild(modalDescription);
+
+        const closeButton = document.createElement('button');
+        closeButton.classList.add('close');
+        closeButton.textContent = 'X';
+        modal.appendChild(closeButton);
+
+        images.forEach(image => {
+            image.addEventListener('click', function() {
+                modal.style.display = 'block';
+                modalContent.src = image.src;
+                const descriptionText = image.closest('.image-container').querySelector('.description').textContent;
+                modalDescription.textContent = descriptionText;
+            });
+        });
+
+        closeButton.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
     });
 })();
 
