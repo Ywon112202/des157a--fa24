@@ -49,6 +49,7 @@
         const closeButton = document.createElement('button');
         closeButton.classList.add('close');
         closeButton.textContent = 'X';
+        closeButton.style.display = 'none';  // Initially hidden
         modal.appendChild(closeButton);
 
         images.forEach(image => {
@@ -57,21 +58,25 @@
                 modalContent.src = image.src;
                 const descriptionText = image.closest('.image-container').querySelector('.description').textContent;
                 modalDescription.textContent = descriptionText; // Display description in modal
+                closeButton.style.display = 'block';  // Show the 'X' button when modal is open
             });
         });
 
         closeButton.addEventListener('click', function() {
             modal.style.display = 'none';
+            closeButton.style.display = 'none';  // Hide the 'X' button when closing the modal
         });
 
         // Close modal when clicking outside the image
         window.addEventListener('click', function(event) {
             if (event.target === modal) {
                 modal.style.display = 'none';
+                closeButton.style.display = 'none';  // Hide 'X' when clicking outside the modal
             }
         });
     });
 })();
+
 
 
 
