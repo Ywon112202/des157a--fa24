@@ -10,25 +10,19 @@
         }
 
         const sliderWidth = sliderContent.scrollWidth;
+    
+
         const cloned = sliderContent.cloneNode(true);
         cloned.className = "b";
         document.querySelector('.slider').appendChild(cloned);
 
         document.documentElement.style.setProperty('--sliderwidth', `${sliderWidth}px`);
+
         document.querySelector('.slider').classList.add("animate");
 
+
         const images = document.querySelectorAll('.image-container .image');
-        const modal = document.createElement('div');
-        modal.classList.add('modal');
-        document.body.appendChild(modal);
 
-        const modalContent = document.createElement('img');
-        modalContent.classList.add('modal-content');
-        modal.appendChild(modalContent);
-
-        const modalDescription = document.createElement('div');
-        modalDescription.classList.add('modal-content-description');
-        modal.appendChild(modalDescription);
 
         const closeButton = document.createElement('button');
         closeButton.classList.add('close');
@@ -55,7 +49,6 @@
         });
     });
 })();
-
 
 
 
