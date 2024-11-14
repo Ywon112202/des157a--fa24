@@ -10,19 +10,13 @@
         }
 
         const sliderWidth = sliderContent.scrollWidth;
-    
-        // Clone the slider content for the looping effect
         const cloned = sliderContent.cloneNode(true);
         cloned.className = "b";
         document.querySelector('.slider').appendChild(cloned);
 
-        // Set the necessary width for the slider container
         document.documentElement.style.setProperty('--sliderwidth', `${sliderWidth}px`);
-
-        // Apply animation class to start the slider
         document.querySelector('.slider').classList.add("animate");
 
-        // Image click to show in modal
         const images = document.querySelectorAll('.image-container .image');
         const modal = document.createElement('div');
         modal.classList.add('modal');
@@ -61,6 +55,7 @@
         });
     });
 })();
+
 
 
 
