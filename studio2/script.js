@@ -1,22 +1,22 @@
-(function () {
-    "use strict";
-    console.log("Reading JS");
 
-    window.addEventListener('load', function () {
-        const sliderContent = document.querySelector('.a');
-        const slider = document.querySelector('.slider');
+window.addEventListener('load', function () {
+    'use strict';
+    const sliderContent = document.querySelector('.a');
 
-        // Clone the slider content
-        const cloned = sliderContent.cloneNode(true);
-        cloned.classList.add("b");
-        slider.appendChild(cloned);
+    // Calculate width after images have loaded
+    const sliderWidth = sliderContent.scrollWidth;
 
-        // Get the width of the slider content for animation
-        const sliderWidth = sliderContent.offsetWidth;
-        document.documentElement.style.setProperty('--slider-width', `${-sliderWidth}px`);
+    // Clone the set of images and assign the class name 'b'
+    const cloned = sliderContent.cloneNode(true);
+    cloned.className = "b";
 
-        // Add the animation class
-        slider.classList.add("animate");
-    });
+    // Append the cloned images to the slider container
+    document.querySelector('.slider').appendChild(cloned);
 
-})();
+    // Set the end of the left position based on slider width
+    document.documentElement.style.setProperty('--sliderwidth', `-${sliderWidth}px`);
+
+    // Add the animate class to start the slider animation
+    document.querySelector('.slider').classList.add("animate");
+});
+
