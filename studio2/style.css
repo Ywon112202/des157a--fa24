@@ -26,12 +26,11 @@ h1 {
     height: 300px;
     overflow: hidden;
     justify-content: flex-start;
-    transition: transform 0.3s ease;
 }
 
-.slider .a, .slider .b {
+.slider .a {
     display: flex;
-    flex-shrink: 0;
+    width: fit-content;
 }
 
 .image-container {
@@ -72,48 +71,14 @@ h1 {
     display: block;
 }
 
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-
-.modal-content-description {
-    text-align: center;
-    color: black;
-    background: white;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
-    background-color: white;
-    border: none;
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 50%;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-}
-
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
-}
-
 @keyframes moveSlider {
-    from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
 }
 
 .animate {
@@ -122,12 +87,6 @@ h1 {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
-
-/* Updated Slider Specifics */
-.slider {
-    width: calc(700px * 8); /* Adjust for all images */
-}
-
 
 
 

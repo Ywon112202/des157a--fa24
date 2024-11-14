@@ -1,6 +1,9 @@
 (function () {
     "use strict";
+    console.log("reading js");
+
     window.addEventListener('load', function () {
+        // Slider setup
         const sliderContent = document.querySelector('.a');
         if (!sliderContent) {
             console.error("Element '.a' not found.");
@@ -17,6 +20,7 @@
 
         // Popup effect for images
         const imageContainers = document.querySelectorAll('.image-container');
+        
         imageContainers.forEach(function(container) {
             container.addEventListener('mouseover', function() {
                 const description = container.querySelector('.description');
@@ -53,23 +57,22 @@
                 modalContent.src = image.src;
                 const descriptionText = image.closest('.image-container').querySelector('.description').textContent;
                 modalDescription.textContent = descriptionText;
-                closeButton.style.display = 'block';
             });
         });
 
         closeButton.addEventListener('click', function() {
             modal.style.display = 'none';
-            closeButton.style.display = 'none';
         });
 
         window.addEventListener('click', function(event) {
             if (event.target === modal) {
                 modal.style.display = 'none';
-                closeButton.style.display = 'none';
             }
         });
     });
 })();
+
+
 
 
 
