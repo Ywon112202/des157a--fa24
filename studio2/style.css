@@ -9,11 +9,12 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    overflow: hidden;
     background-color: #f5f5dc; /* Beige background */
 }
 
 #one {
-    width: 100%;
+    width: 100vw;
     overflow: hidden;
 }
 
@@ -21,13 +22,12 @@ body {
     display: flex;
     position: relative;
     height: 200px;
-    width: auto;
-    align-items: center;
+    white-space: nowrap;
 }
 
-.slider img {
+.slider div img {
     height: 100%;
-    display: block;
+    display: inline-block;
     margin-right: 20px;
 }
 
@@ -43,3 +43,4 @@ body {
 .animate {
     animation: moveSlider 30s linear infinite;
 }
+
