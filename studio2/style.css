@@ -5,42 +5,39 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-    background-color: #f5f5dc; /* Beige background */
 }
-
+/* I added this for the section */
 #one {
-    width: 100vw;
-    overflow: hidden;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .slider {
     display: flex;
-    position: relative;
+    position: absolute;
+    top:0;
+    left: 0;
     height: 200px;
-    white-space: nowrap;
 }
 
 .slider div img {
     height: 100%;
-    display: inline-block;
+    display: block;
     margin-right: 20px;
 }
 
 .a, .b {
-    display: flex;
+   display: flex;
+   height: 100%;
 }
 
 @keyframes moveSlider {
-    from { transform: translateX(0); }
-    to { transform: translateX(var(--sliderwidth)); }
+    from { left: 0; }
+    to { left: var(--sliderwidth) }
 }
-
 .animate {
-    animation: moveSlider 30s linear infinite;
+    animation-name: moveSlider;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
-
