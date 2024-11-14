@@ -4,24 +4,18 @@
 
     window.addEventListener('load', function () {
         // Slider setup
-        const sliderContent = document.querySelector('.a');
-        if (!sliderContent) {
-            console.error("Element '.a' not found.");
-            return;
-        }
+        const sliderContent = document.querySelector('.slider');
+        const images = Array.from(document.querySelectorAll('.image-container'));
 
-        const sliderWidth = sliderContent.scrollWidth;
-        const cloned = sliderContent.cloneNode(true);
-        cloned.className = "b";
-        document.querySelector('.slider').appendChild(cloned);
+        // Adjust slider width based on image count
+        const sliderWidth = images.length * 700 + (images.length - 1) * 10; // Adjust as per image width + margin
+        sliderContent.style.width = `${sliderWidth}px`;
 
-        document.documentElement.style.setProperty('--sliderwidth', `-${sliderWidth}px`);
-        document.querySelector('.slider').classList.add("animate");
+        // Add animation class if needed
+        sliderContent.classList.add("animate");
 
         // Popup effect for images
-        const imageContainers = document.querySelectorAll('.image-container');
-        
-        imageContainers.forEach(function(container) {
+        images.forEach(container => {
             container.addEventListener('mouseover', function() {
                 const description = container.querySelector('.description');
                 description.style.display = 'block';
@@ -32,8 +26,7 @@
             });
         });
 
-        // Image click to show in modal
-        const images = document.querySelectorAll('.image-container .image');
+        // Modal setup
         const modal = document.createElement('div');
         modal.classList.add('modal');
         document.body.appendChild(modal);
@@ -52,12 +45,13 @@
         closeButton.style.display = 'none';  // Initially hidden
         modal.appendChild(closeButton);
 
-        images.forEach(image => {
+        images.forEach(imageContainer => {
+            const image = imageContainer.querySelector('.image');
             image.addEventListener('click', function() {
                 modal.style.display = 'flex'; // Center modal
                 modalContent.src = image.src;
-                const descriptionText = image.closest('.image-container').querySelector('.description').textContent;
-                modalDescription.textContent = descriptionText; // Display description in modal
+                const descriptionText = imageContainer.querySelector('.description').textContent;
+                modalDescription.textContent = descriptionText;
                 closeButton.style.display = 'block';  // Show the 'X' button when modal is open
             });
         });
@@ -76,6 +70,7 @@
         });
     });
 })();
+
 
 
 
