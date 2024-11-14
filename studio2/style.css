@@ -5,8 +5,14 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
-/* I added this for the section */
+
 #one {
     width: 100%;
     overflow-x: hidden;
@@ -15,7 +21,7 @@ body {
 .slider {
     display: flex;
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     height: 200px;
 }
@@ -41,3 +47,10 @@ body {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
+
+/* Center the header and footer */
+h1, footer {
+    text-align: center;
+    margin: 10px;
+}
+
