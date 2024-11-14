@@ -29,6 +29,11 @@ h1 {
     transition: transform 0.3s ease;
 }
 
+.slider .a, .slider .b {
+    display: flex;
+    flex-shrink: 0;
+}
+
 .image-container {
     position: relative;
     width: 700px;
@@ -117,6 +122,12 @@ h1 {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
+
+/* Updated Slider Specifics */
+.slider {
+    width: calc(700px * 8); /* Adjust for all images */
+}
+
 
 
 
