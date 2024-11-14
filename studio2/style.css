@@ -133,7 +133,7 @@ h2 {
     animation-iteration-count: infinite;
 }
 
-/* Updated for modal handling and accessibility */
+
 .modal-content, .modal-content-description {
     padding: 10px;
     color: white;
