@@ -17,7 +17,20 @@
     
         document.documentElement.style.setProperty('--sliderwidth', `-${sliderWidth}px`);
         document.querySelector('.slider').classList.add("animate");
-    });
-    
 
+        // Popup effect on image hover
+        const images = document.querySelectorAll('.image-container');
+        
+        images.forEach(function (image) {
+            image.addEventListener('mouseover', function () {
+                const description = image.querySelector('.description');
+                description.style.display = 'block';
+            });
+            
+            image.addEventListener('mouseout', function () {
+                const description = image.querySelector('.description');
+                description.style.display = 'none';
+            });
+        });
+    });
 })();
