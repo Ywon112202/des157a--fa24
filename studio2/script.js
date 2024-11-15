@@ -11,8 +11,7 @@
 
         const images = document.querySelectorAll('.image-container .image');
         const sliderWidth = sliderContent.scrollWidth;
-        
-        // Clone images and append to the slider
+
         images.forEach(image => {
             const clonedContainer = image.closest('.image-container').cloneNode(true);
             sliderContent.appendChild(clonedContainer);
@@ -51,7 +50,6 @@
         });
     });
 })();
-
 
 
 
