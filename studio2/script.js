@@ -34,7 +34,6 @@
 
 
         const images = document.querySelectorAll('.image-container .image');
-        console.log(images);
         images.forEach(image => {
             image.addEventListener('click', function() {
                 modal.style.display = 'block';
