@@ -58,6 +58,7 @@
         updateDisplay();
     }
 
+
     function checkGameState() {
         if (hiddenWord.join("") === chosenWord) {
             feedback.textContent = "You Win! 🎉";
@@ -81,3 +82,4 @@
 
     initializeGame();
 })();
+
