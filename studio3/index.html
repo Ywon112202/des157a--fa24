@@ -5,37 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <title>Document</title>
+    <title>Two-Player Hangman</title>
 </head>
 <body>
-
-        <header>
-            <h1>Digital Hangman</h1>
-            <p>Guess the word before the hangman is complete!</p>
-        </header>
-        <main>
-            <div id="game">
-                <div id="hangman">
-                    <img id="hangman-image" src="images/step0.png" alt="Hangman">
-                </div>
-                <div id="word-display">
-                    <p id="hidden-word">_ _ _ _</p>
-                </div>
-                <div id="input-area">
-                    <label for="guess">Enter a letter:</label>
-                    <input type="text" id="guess" maxlength="1">
-                    <button id="submit">Guess</button>
-                </div>
-                <div id="used-letters">
-                    <p>Used Letters: <span id="letters"></span></p>
-                </div>
+    <header>
+        <h1>Two-Player Hangman</h1>
+        <p>Player 1 sets the word, Player 2 guesses it!</p>
+    </header>
+    <main>
+        <div id="setup-phase">
+            <label for="word-input">Player 1, enter a word:</label>
+            <input type="text" id="word-input">
+            <button id="start-game">Start Game</button>
+        </div>
+        <div id="game" style="display: none;">
+            <div id="hangman">
+                <img id="hangman-image" src="images/step0.png" alt="Hangman game illustration">
+            </div>
+            <div id="word-display">
+                <p id="hidden-word">_ _ _ _</p>
+            </div>
+            <div id="input-area">
+                <label for="guess">Player 2, enter a letter:</label>
+                <input type="text" id="guess" maxlength="1">
+                <button id="submit">Guess</button>
+            </div>
+            <div id="used-letters">
+                <p>Used Letters: <span id="letters"></span></p>
             </div>
             <div id="feedback"></div>
-        </main>
-        <footer>
-            <p>Made with ❤️ | Sounds by <a href="https://freesound.org/" target="_blank">Freesound</a></p>
-        </footer>
-
-    
+        </div>
+    </main>
+    <footer>
+        <p>Made with ❤️ | Sounds by <a href="https://freesound.org/" target="_blank">Freesound</a></p>
+    </footer>
 </body>
 </html>
