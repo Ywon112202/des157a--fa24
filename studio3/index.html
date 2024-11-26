@@ -8,48 +8,32 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-
 <div id="game-container">
     <h1>Two Player Dice Game</h1>
     
     <!-- Player 1 Section -->
-    <div id="player1">
+    <div id="player1" class="player-section">
         <h2>Player 1</h2>
         <p>Roll the dice and guess the letter!</p>
         <button id="roll-btn-player1">Roll Dice</button>
-        <input type="text" id="guess-input-player1" maxlength="1" placeholder="Guess Letter">
-        
-        <!-- Dice image for Player 1 -->
-        <img id="dice-image-player1" src="image/dice6.jpg" alt="Dice Player 1">
-        <img id="dice-image-player1" src="image/dice5.jpg" alt="Dice Player 1">
-        <img id="dice-image-player1" src="image/dice4.jpg" alt="Dice Player 1">
-        <img id="dice-image-player1" src="image/dice3.jpg" alt="Dice Player 1">
-        <img id="dice-image-player1" src="image/dice2.jpg" alt="Dice Player 1">
-        <img id="dice-image-player1" src="image/dice1.jpg" alt="Dice Player 1">
-
-        <div id="dice-result-player1"></div>
-        <div id="game-result-player1"></div>
+        <input type="text" id="guess-input-player1" maxlength="1" placeholder="Guess a letter" disabled>
+        <img id="dice-img-player1" src="image/dice1.jpg" alt="Dice for Player 1">
+        <div id="dice-result-player1" class="result-text"></div>
+        <div id="game-result-player1" class="game-result-text"></div>
     </div>
 
     <!-- Player 2 Section -->
-    <div id="player2">
+    <div id="player2" class="player-section">
         <h2>Player 2</h2>
         <p>Roll the dice and guess the letter!</p>
-        <button id="roll-btn-player2">Roll Dice</button>
-        <input type="text" id="guess-input-player2" maxlength="1" placeholder="Guess Letter">
-        
-        <!-- Dice image for Player 2 -->
-        <img id="dice-image-player2" src="image/dice6.jpg" alt="Dice Player 2">
-        <img id="dice-image-player2" src="image/dice5.jpg" alt="Dice Player 2">
-        <img id="dice-image-player2" src="image/dice4.jpg" alt="Dice Player 2">
-        <img id="dice-image-player2" src="image/dice3.jpg" alt="Dice Player 2">
-        <img id="dice-image-player2" src="image/dice2.jpg" alt="Dice Player 2">
-        <img id="dice-image-player2" src="image/dice1.jpg" alt="Dice Player 2">
-
-        <div id="dice-result-player2"></div>
-        <div id="game-result-player2"></div>
+        <button id="roll-btn-player2" disabled>Roll Dice</button>
+        <input type="text" id="guess-input-player2" maxlength="1" placeholder="Guess a letter" disabled>
+        <img id="dice-img-player2" src="image/dice1.jpg" alt="Dice for Player 2">
+        <div id="dice-result-player2" class="result-text"></div>
+        <div id="game-result-player2" class="game-result-text"></div>
     </div>
     
+    <!-- Scoreboard -->
     <div id="scoreboard">
         <h3>Scores</h3>
         <p>Player 1: <span id="score-player1">0</span></p>
@@ -58,10 +42,11 @@
 </div>
 
 <footer>
+    <p>&copy; 2024 Dice Game</p>
 </footer>
-
 </body>
 </html>
+
 
 
 
