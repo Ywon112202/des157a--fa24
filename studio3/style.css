@@ -18,7 +18,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     width: 80%;
-    max-width: 500px; /* Maximum width of the game container */
+    max-width: 600px; /* Maximum width of the game container */
     margin: 20px;
     text-align: center;
 }
@@ -29,6 +29,21 @@ h1 {
     color: #333;
     margin-bottom: 20px;
     font-family: 'Roboto', sans-serif; /* Cleaner font for the header */
+}
+
+/* Player Sections Styling */
+#player1, #player2 {
+    background-color: #ecf0f1; /* Light grey background for player sections */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+#player1 h2, #player2 h2 {
+    font-size: 1.8em;
+    color: #3498db; /* Blue color for player titles */
+    margin-bottom: 10px;
 }
 
 /* Dice Container Styling */
@@ -76,11 +91,22 @@ input {
 }
 
 /* Game Result Styling */
-#game-result {
+#game-result, #game-result-player1, #game-result-player2 {
     margin-top: 20px;
     font-size: 1.5em;
     color: #e74c3c; /* Red color for the result */
     font-weight: bold;
+}
+
+/* Scoreboard Styling */
+#scoreboard {
+    margin-top: 30px;
+    font-size: 1.5em;
+    color: #2c3e50; /* Dark color for scoreboard */
+}
+
+#scoreboard p {
+    margin: 10px 0;
 }
 
 /* Footer Styling */
@@ -91,6 +117,33 @@ footer {
     color: #777;
     text-align: center;
 }
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    #game-container {
+        padding: 20px;
+        max-width: 100%; /* Full width on smaller screens */
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    input {
+        font-size: 1em;
+        width: 40px;
+    }
+
+    #scoreboard {
+        font-size: 1.2em;
+    }
+}
+
 
 
 

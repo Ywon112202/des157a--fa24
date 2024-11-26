@@ -3,36 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dice Hangman</title>
-    <link href="style.css" rel="stylesheet">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Dice Hangman Game</h1>
-    <p>Roll the dice to determine the difficulty, and guess the word!</p>
 
-    <div id="dice-container">
-        <button id="roll-dice">Roll Dice</button>
-        <p id="dice-result">Roll the dice to begin!</p>
+<div id="game-container">
+    <h1>Two Player Dice Game</h1>
+    
+    <!-- Player 1 Section -->
+    <div id="player1">
+        <h2>Player 1</h2>
+        <p>Roll the dice and guess the letter!</p>
+        <button id="roll-btn-player1">Roll Dice</button>
+        <input type="text" id="guess-input-player1" maxlength="1" placeholder="Guess Letter">
+        <div id="dice-container-player1"></div>
+        <div id="dice-result-player1"></div>
+        <div id="game-result-player1"></div>
     </div>
 
-    <div id="game-container">
-        <h2>Word to Guess: <span id="word-display"></span></h2>
-        <p>Incorrect guesses left: <span id="guesses-left"></span></p>
-
-        <div id="letters-container">
-            <input type="text" id="letter-guess" maxlength="1" />
-            <button id="guess-letter">Guess Letter</button>
-        </div>
-
-        <div id="game-result"></div>
+    <!-- Player 2 Section -->
+    <div id="player2">
+        <h2>Player 2</h2>
+        <p>Roll the dice and guess the letter!</p>
+        <button id="roll-btn-player2">Roll Dice</button>
+        <input type="text" id="guess-input-player2" maxlength="1" placeholder="Guess Letter">
+        <div id="dice-container-player2"></div>
+        <div id="dice-result-player2"></div>
+        <div id="game-result-player2"></div>
     </div>
+    
+    <div id="scoreboard">
+        <h3>Scores</h3>
+        <p>Player 1: <span id="score-player1">0</span></p>
+        <p>Player 2: <span id="score-player2">0</span></p>
+    </div>
+</div>
 
-    <footer>
-        <p>Created by [Your Name].</p>
-    </footer>
+<footer>
+</footer>
+
 </body>
 </html>
+
 
 
 
