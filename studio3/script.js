@@ -23,8 +23,7 @@
     let startingPlayer = localStorage.getItem("startingPlayer") === "1" ? "2" : "1";
     localStorage.setItem("startingPlayer", startingPlayer);
 
-    // Start game button for Hangman
-    startGameButton.addEventListener("click", function() {
+    startGameButton.addEventListener("click", () => {
         wordToGuess = wordInput.value.trim().toLowerCase();
         if (wordToGuess === "") {
             feedback.textContent = "Please enter a valid word!";
@@ -45,8 +44,7 @@
         feedback.textContent = ""; // Clear previous feedback
     }
 
-    // Submit button for guessing a letter
-    submitButton.addEventListener("click", function () {
+    submitButton.addEventListener("click", () => {
         const guess = guessInput.value.trim().toLowerCase();
         guessInput.value = "";
         if (guess === "" || usedLetters.includes(guess) || guess.length !== 1) {
@@ -124,7 +122,12 @@
     function setUpTurn() {
         game.innerHTML = `<p>Roll the dice for ${gameData.players[gameData.index]}</p>`;
         actionArea.innerHTML = '<button id="roll">Roll the Dice</button>';
+        actionArea.innerHTML += '<button id="pass">Pass</button>';  // Add "Pass" button to continue the game
         document.getElementById("roll").addEventListener("click", throwDice);
+        document.getElementById("pass").addEventListener("click", function () {
+            gameData.index = gameData.index ? 0 : 1;
+            setUpTurn();
+        });
     }
 
     function throwDice() {
