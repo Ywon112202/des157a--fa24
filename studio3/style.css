@@ -1,14 +1,14 @@
-/* General Body Styles */
 body {
     font-family: 'Arial', sans-serif;
     padding: 0;
     margin: 0;
-    background-color: #f0f8ff; /* Soft background color */
+    background-color: #f0f8ff; 
     display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    height: 100vh; /* Full viewport height */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
     text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 /* Game Container Styling */
@@ -16,11 +16,17 @@ body {
     background-color: #ffffff;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
     width: 80%;
-    max-width: 600px; /* Maximum width of the game container */
+    max-width: 600px; 
     margin: 20px;
     text-align: center;
+    animation: fadeIn 0.5s ease-out; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Title Styling */
@@ -28,22 +34,28 @@ h1 {
     font-size: 2.5em;
     color: #333;
     margin-bottom: 20px;
-    font-family: 'Roboto', sans-serif; /* Cleaner font for the header */
+    font-family: 'Roboto', sans-serif; 
 }
 
 /* Player Sections Styling */
 #player1, #player2 {
-    background-color: #ecf0f1; /* Light grey background for player sections */
+    background-color: #ecf0f1; 
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
+    transition: box-shadow 0.3s ease-in-out; 
+}
+
+#player1:hover, #player2:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
 }
 
 #player1 h2, #player2 h2 {
     font-size: 1.8em;
-    color: #3498db; /* Blue color for player titles */
+    color: #3498db; 
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 /* Dice Container Styling */
@@ -54,8 +66,16 @@ h1 {
 #dice-result {
     font-size: 1.5em;
     font-weight: bold;
-    color: #2c3e50; /* Dark color for text */
+    color: #2c3e50; 
     margin-top: 10px;
+    text-transform: uppercase; 
+    animation: bounce 0.5s ease-out; 
+}
+
+@keyframes bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 /* Buttons Styling */
@@ -64,37 +84,51 @@ button {
     font-size: 1.2em;
     cursor: pointer;
     border: none;
-    background-color: #3498db; /* Vibrant blue */
+    background-color: #3498db; 
     color: white;
     border-radius: 8px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
 button:hover {
-    background-color: #2980b9; /* Darker shade when hovered */
+    background-color: #2980b9; 
+    transform: scale(1.05); 
 }
 
 button:disabled {
-    background-color: #bdc3c7; /* Disabled button color */
+    background-color: #bdc3c7; 
     cursor: not-allowed;
 }
 
-/* Input Field Styling */
+
+button:focus {
+    outline: 3px solid #f39c12;
+    outline-offset: 4px;
+}
+
+
 input {
     padding: 10px;
     font-size: 1.2em;
     border: 2px solid #3498db;
     border-radius: 8px;
     margin-top: 10px;
-    width: 50px; /* Fixed width for letter input */
+    width: 50px; 
     text-align: center;
+    transition: border-color 0.3s ease; 
 }
 
-/* Game Result Styling */
+
+input:focus {
+    border-color: #f39c12;
+    outline: none;
+}
+
+
 #game-result, #game-result-player1, #game-result-player2 {
     margin-top: 20px;
     font-size: 1.5em;
-    color: #e74c3c; /* Red color for the result */
+    color: #e74c3c; 
     font-weight: bold;
 }
 
@@ -102,27 +136,33 @@ input {
 #scoreboard {
     margin-top: 30px;
     font-size: 1.5em;
-    color: #2c3e50; /* Dark color for scoreboard */
+    color: #2c3e50; 
+    font-weight: bold;
 }
 
 #scoreboard p {
     margin: 10px 0;
+    font-size: 1.8em;
+    color: #27ae60; 
 }
 
-/* Footer Styling */
+
 footer {
     position: absolute;
     bottom: 20px;
     font-size: 14px;
     color: #777;
     text-align: center;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 5px;
 }
 
-/* Responsive Design */
+
 @media (max-width: 600px) {
     #game-container {
         padding: 20px;
-        max-width: 100%; /* Full width on smaller screens */
+        max-width: 100%; 
     }
 
     h1 {
@@ -142,7 +182,12 @@ footer {
     #scoreboard {
         font-size: 1.2em;
     }
+
+    footer {
+        font-size: 12px;
+    }
 }
+
 
 
 

@@ -2,6 +2,7 @@
     'use strict';
     console.log('reading js');
 
+    
     const rollDiceButtonPlayer1 = document.querySelector('#roll-btn-player1');
     const rollDiceButtonPlayer2 = document.querySelector('#roll-btn-player2');
     const guessInputPlayer1 = document.querySelector('#guess-input-player1');
@@ -12,10 +13,10 @@
     const gameResultPlayer2 = document.querySelector('#game-result-player2');
     const scorePlayer1 = document.querySelector('#score-player1');
     const scorePlayer2 = document.querySelector('#score-player2');
-    const diceImagePlayer1 = document.querySelector('#dice-img-player1'); // Dice image for Player 1
-    const diceImagePlayer2 = document.querySelector('#dice-img-player2'); // Dice image for Player 2
+    const diceImagePlayer1 = document.querySelector('#dice-img-player1');  
+    const diceImagePlayer2 = document.querySelector('#dice-img-player2');  
 
-    let currentPlayer = 1; // Track the current player (1 or 2)
+    let currentPlayer = 1; 
     let score1 = 0;
     let score2 = 0;
     
@@ -23,51 +24,50 @@
         words: ['javascript', 'hangman', 'programming', 'developer', 'internet'],
         currentWord: '',
         hiddenWord: '',
-        maxGuesses: 6,  // Default max incorrect guesses
+        maxGuesses: 6,  
         incorrectGuesses: 0,
         correctGuesses: 0
     };
 
+    // Roll Dice function
     function rollDice(player) {
-        const roll = Math.floor(Math.random() * 6) + 1; // Dice roll between 1 and 6
-        const diceImage = player === 1 ? diceImagePlayer1 : diceImagePlayer2;
-        const diceResultText = player === 1 ? diceResultPlayer1 : diceResultPlayer2;
+        const roll = Math.floor(Math.random() * 6) + 1; 
 
-        // Update the dice result text
+
         if (player === 1) {
-            diceResultText.textContent = `Player 1 rolled a ${roll}!`;
+            diceResultPlayer1.textContent = `Player 1 rolled a ${roll}!`;
+            diceImagePlayer1.src = `images/dice-${roll}.png`; 
         } else {
-            diceResultText.textContent = `Player 2 rolled a ${roll}!`;
+            diceResultPlayer2.textContent = `Player 2 rolled a ${roll}!`;
+            diceImagePlayer2.src = `images/dice-${roll}.png`; 
         }
 
-        // Update the dice image based on the roll (dice1.png, dice2.png, ...)
-        diceImage.src = `dice${roll}.png`; // Assumes dice images are named dice1.png, dice2.png, etc.
 
-        // Change maxGuesses based on roll (e.g., if you roll 6, you get more incorrect guesses)
         gameData.maxGuesses = roll;
-        gameData.incorrectGuesses = 0;  // Reset incorrect guesses for the new round
+        gameData.incorrectGuesses = 0;  
 
         startGame(player);
     }
+
 
     function startGame(player) {
         const randomWord = gameData.words[Math.floor(Math.random() * gameData.words.length)];
         gameData.currentWord = randomWord;
         gameData.hiddenWord = randomWord.replace(/[a-zA-Z]/g, '_');
+        
+       
         if (player === 1) {
             gameResultPlayer1.textContent = `Game started! Guess a letter.`;
-        } else {
-            gameResultPlayer2.textContent = `Game started! Guess a letter.`;
-        }
-
-        // Enable the guess input for the current player
-        if (player === 1) {
+            diceResultPlayer1.textContent = gameData.hiddenWord;
             guessInputPlayer1.disabled = false;
         } else {
+            gameResultPlayer2.textContent = `Game started! Guess a letter.`;
+            diceResultPlayer2.textContent = gameData.hiddenWord;
             guessInputPlayer2.disabled = false;
         }
     }
 
+    
     function handleGuess(player) {
         const letter = player === 1 ? guessInputPlayer1.value.toLowerCase() : guessInputPlayer2.value.toLowerCase();
 
@@ -76,7 +76,7 @@
             return;
         }
 
-        // Clear the input field
+
         if (player === 1) {
             guessInputPlayer1.value = '';
         } else {
@@ -102,34 +102,36 @@
         }
 
         if (correctGuess) {
-            // Update score
+
             if (player === 1) score1++;
             else score2++;
 
-            // Display new scores
+     
             scorePlayer1.textContent = score1;
             scorePlayer2.textContent = score2;
         } else {
-            // If wrong guess, decrease guesses left for the current player
+           
             gameData.incorrectGuesses++;
         }
 
-        // Check for win or loss
+
         if (gameData.hiddenWord === gameData.currentWord) {
             if (player === 1) {
                 gameResultPlayer1.textContent = 'Congratulations, Player 1 wins!';
             } else {
                 gameResultPlayer2.textContent = 'Congratulations, Player 2 wins!';
             }
+            endGame();
         } else if (gameData.incorrectGuesses >= gameData.maxGuesses) {
             if (player === 1) {
                 gameResultPlayer1.textContent = 'Sorry, Player 1 loses!';
             } else {
                 gameResultPlayer2.textContent = 'Sorry, Player 2 loses!';
             }
+            endGame();
         }
 
-        // Switch player turn
+
         currentPlayer = currentPlayer === 1 ? 2 : 1;
         if (currentPlayer === 1) {
             rollDiceButtonPlayer1.disabled = false;
@@ -138,6 +140,14 @@
             rollDiceButtonPlayer1.disabled = true;
             rollDiceButtonPlayer2.disabled = false;
         }
+    }
+
+
+    function endGame() {
+        guessInputPlayer1.disabled = true;
+        guessInputPlayer2.disabled = true;
+        rollDiceButtonPlayer1.disabled = true;
+        rollDiceButtonPlayer2.disabled = true;
     }
 
     // Event Listeners for Dice Rolls and Guesses
@@ -161,3 +171,4 @@
         }
     });
 })();
+
