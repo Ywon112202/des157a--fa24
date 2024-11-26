@@ -1,3 +1,4 @@
+/* General Body Styling */
 body {
     font-family: 'Arial', sans-serif;
     padding: 0;
@@ -100,12 +101,10 @@ button:disabled {
     cursor: not-allowed;
 }
 
-
 button:focus {
     outline: 3px solid #f39c12;
     outline-offset: 4px;
 }
-
 
 input {
     padding: 10px;
@@ -118,13 +117,12 @@ input {
     transition: border-color 0.3s ease; 
 }
 
-
 input:focus {
     border-color: #f39c12;
     outline: none;
 }
 
-
+/* Game Result Styling */
 #game-result, #game-result-player1, #game-result-player2 {
     margin-top: 20px;
     font-size: 1.5em;
@@ -135,18 +133,25 @@ input:focus {
 /* Scoreboard Styling */
 #scoreboard {
     margin-top: 30px;
-    font-size: 1.5em;
+    padding: 10px;
+    border-top: 2px solid #ddd;
+    font-size: 1.2em; /* Reduced font size */
     color: #2c3e50; 
     font-weight: bold;
 }
 
-#scoreboard p {
-    margin: 10px 0;
-    font-size: 1.8em;
-    color: #27ae60; 
+#scoreboard h3 {
+    font-size: 1em; /* Smaller heading size */
+    margin-bottom: 10px;
 }
 
+#scoreboard p {
+    font-size: 1em; /* Smaller scores */
+    color: #27ae60; 
+    margin: 5px 0;
+}
 
+/* Footer Styling */
 footer {
     position: absolute;
     bottom: 20px;
@@ -158,7 +163,7 @@ footer {
     padding: 5px;
 }
 
-
+/* Responsive Styling */
 @media (max-width: 600px) {
     #game-container {
         padding: 20px;
@@ -180,17 +185,10 @@ footer {
     }
 
     #scoreboard {
-        font-size: 1.2em;
+        font-size: 1em; /* Adjusted for smaller screens */
     }
 
     footer {
         font-size: 12px;
     }
 }
-
-
-
-
-
-
-
