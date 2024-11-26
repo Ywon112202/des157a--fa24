@@ -3,52 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <title>Dice Hangman</title>
+    <link href="styles.css" rel="stylesheet">
     <script src="script.js" defer></script>
-    <title>Two-Player Hangman</title>
 </head>
 <body>
-    <header>
-        <h1>Two-Player Hangman</h1>
-        <p id="turn-indicator"></p>
-    </header>
-    <main>
-        <!-- Word Setup Phase -->
-        <div id="setup-phase">
-            <label id="word-prompt" for="word-input">Player 1, enter a word:</label>
-            <input type="text" id="word-input">
-            <button id="start-game">Start Game</button>
+    <h1>Dice Hangman Game</h1>
+    <p>Roll the dice to determine the difficulty, and guess the word!</p>
+
+    <div id="dice-container">
+        <button id="roll-dice">Roll Dice</button>
+        <p id="dice-result">Roll the dice to begin!</p>
+    </div>
+
+    <div id="game-container">
+        <h2>Word to Guess: <span id="word-display"></span></h2>
+        <p>Incorrect guesses left: <span id="guesses-left"></span></p>
+
+        <div id="letters-container">
+            <input type="text" id="letter-guess" maxlength="1" />
+            <button id="guess-letter">Guess Letter</button>
         </div>
-        <!-- Game Phase -->
-        <div id="game" style="display: none;">
-            <!-- Hangman Image Container -->
-            <div id="hangman">
-                <div id="hangman-image-container">
-                    <img id="hangman-image" src="images/step0.png" alt="Hangman game illustration">
-                </div>
-            </div>
-            <!-- Word Display -->
-            <div id="word-display">
-                <p id="hidden-word">_ _ _ _</p>
-            </div>
-            <!-- Input Area -->
-            <div id="input-area">
-                <label for="guess">Player 2, enter a letter:</label>
-                <input type="text" id="guess" maxlength="1">
-                <button id="submit">Guess</button>
-            </div>
-            <!-- Used Letters -->
-            <div id="used-letters">
-                <p>Used Letters: <span id="letters"></span></p>
-            </div>
-            <!-- Feedback -->
-            <div id="feedback"></div>
-        </div>
-    </main>
+
+        <div id="game-result"></div>
+    </div>
+
     <footer>
-       
+        <p>Created by [Your Name].</p>
     </footer>
-    
 </body>
 </html>
+
 
