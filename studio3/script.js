@@ -10,20 +10,20 @@
     const maxAttempts = 6;
 
     const wordInput = document.getElementById("word-input");
-    const startGameButton = document.getElementById("start-game");
+    const startHangmanButton = document.getElementById("start-hangman");
     const setupPhase = document.getElementById("setup-phase");
     const gameArea = document.getElementById("game");
     const hiddenWordDisplay = document.getElementById("hidden-word");
     const hangmanImage = document.getElementById("hangman-image");
     const guessInput = document.getElementById("guess");
-    const submitButton = document.getElementById("submit");
+    const submitButton = document.getElementById("submit-guess");
     const usedLettersDisplay = document.getElementById("letters");
     const feedback = document.getElementById("feedback");
 
     let startingPlayer = localStorage.getItem("startingPlayer") === "1" ? "2" : "1";
     localStorage.setItem("startingPlayer", startingPlayer);
 
-    startGameButton.addEventListener("click", () => {
+    startHangmanButton.addEventListener("click", () => {
         wordToGuess = wordInput.value.trim().toLowerCase();
         if (wordToGuess === "") {
             feedback.textContent = "Please enter a valid word!";
@@ -104,7 +104,7 @@
         roll2: 0,
         rollSum: 0,
         index: 0,
-        gameEnd: 29,
+        gameEnd: 30,
     };
 
     startPigGameButton.addEventListener("click", function () {
@@ -166,6 +166,7 @@
         }
     }
 })();
+
 
 
 
