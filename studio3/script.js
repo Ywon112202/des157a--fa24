@@ -2,100 +2,109 @@
     'use strict';
     console.log('reading js');
 
-    const rollDiceButton = document.querySelector('#roll-dice');
-    const diceResultDisplay = document.querySelector('#dice-result');
-    const wordDisplay = document.querySelector('#word-display');
-    const guessesLeftDisplay = document.querySelector('#guesses-left');
-    const guessLetterButton = document.querySelector('#guess-letter');
-    const letterGuessInput = document.querySelector('#letter-guess');
-    const gameResultDisplay = document.querySelector('#game-result');
-    const gameContainer = document.querySelector('#game-container');
+    // Game elements
+    const startGameButton = document.querySelector('#startGameButton');
+    const gameArea = document.querySelector('#game');
+    const scoreArea = document.querySelector('#score');
 
+    // Game data structure
     const gameData = {
-        words: ['javascript', 'hangman', 'programming', 'developer', 'internet'],
-        currentWord: '',
-        hiddenWord: '',
-        maxGuesses: 6,  // Default max incorrect guesses
-        incorrectGuesses: 0,
-        correctGuesses: 0
+        wordList: ["javascript", "hangman", "developer", "coding", "challenge"],
+        chosenWord: "",
+        displayedWord: [],
+        guessedLetters: [],
+        incorrectGuesses: [],
+        maxIncorrectGuesses: 0,
+        score: 0
     };
 
+    // Dice roll values (to determine max incorrect guesses)
+    const diceImages = [
+        "images/1die.jpg", "images/2die.jpg", "images/3die.jpg", 
+        "images/4die.jpg", "images/5die.jpg", "images/6die.jpg"
+    ];
+
+    // Dice roll to set max incorrect guesses
     function rollDice() {
-        const roll = Math.floor(Math.random() * 6) + 1; // Dice roll between 1 and 6
-        diceResultDisplay.textContent = `You rolled a ${roll}!`;
-
-        // Change maxGuesses based on roll (e.g., if you roll 6, you get more incorrect guesses)
-        gameData.maxGuesses = roll;
-        guessesLeftDisplay.textContent = gameData.maxGuesses - gameData.incorrectGuesses;
-
-        startGame();
+        const roll = Math.floor(Math.random() * 6) + 1;
+        gameData.maxIncorrectGuesses = roll;
+        console.log(`Rolled a ${roll}`);
+        return roll;
     }
 
-    function startGame() {
-        // Pick a random word from the list
-        const randomWord = gameData.words[Math.floor(Math.random() * gameData.words.length)];
-        gameData.currentWord = randomWord;
-        gameData.hiddenWord = randomWord.replace(/[a-zA-Z]/g, '_');
-        wordDisplay.textContent = gameData.hiddenWord;
-        
-        // Show the game controls
-        gameContainer.style.display = 'block';
-        diceResultDisplay.textContent = `You rolled a ${Math.floor(Math.random() * 6) + 1}!`;
+    // Start the game
+    startGameButton.addEventListener("click", function() {
+        // Roll dice to decide difficulty
+        const maxGuesses = rollDice();
+        console.log(`Max Incorrect Guesses: ${maxGuesses}`);
 
-        guessLetterButton.disabled = false;
-    }
+        // Randomly pick a word
+        gameData.chosenWord = gameData.wordList[Math.floor(Math.random() * gameData.wordList.length)];
+        gameData.displayedWord = Array(gameData.chosenWord.length).fill('_');
+        gameData.guessedLetters = [];
+        gameData.incorrectGuesses = [];
+        gameData.score = 0;
 
+        // Update the interface
+        gameArea.innerHTML = `
+            <p>Word to guess: ${gameData.displayedWord.join(' ')}</p>
+            <input type="text" id="guessInput" maxlength="1" />
+            <button id="guessButton">Guess Letter</button>
+            <p>Incorrect Guesses: ${gameData.incorrectGuesses.join(', ')}</p>
+            <p>Max Incorrect Guesses: ${maxGuesses}</p>
+        `;
+        scoreArea.innerHTML = `Score: ${gameData.score}`;
+
+        // Add event listener for guesses
+        document.querySelector('#guessButton').addEventListener('click', handleGuess);
+    });
+
+    // Handle the player's guess
     function handleGuess() {
-        const letter = letterGuessInput.value.toLowerCase();
+        const guessInput = document.querySelector('#guessInput');
+        const guess = guessInput.value.toLowerCase();
 
-        if (letter.length !== 1 || !/[a-zA-Z]/.test(letter)) {
-            alert("Please enter a valid letter.");
+        if (gameData.guessedLetters.includes(guess)) {
+            alert("You've already guessed that letter!");
             return;
         }
 
-        letterGuessInput.value = '';  // Clear input
+        gameData.guessedLetters.push(guess);
 
-        let correctGuess = false;
-
-        let updatedWord = '';
-        for (let i = 0; i < gameData.currentWord.length; i++) {
-            if (gameData.currentWord[i] === letter) {
-                updatedWord += letter;
-                correctGuess = true;
-            } else {
-                updatedWord += gameData.hiddenWord[i];
+        // Check if the guess is correct
+        if (gameData.chosenWord.includes(guess)) {
+            // Update displayed word
+            for (let i = 0; i < gameData.chosenWord.length; i++) {
+                if (gameData.chosenWord[i] === guess) {
+                    gameData.displayedWord[i] = guess;
+                }
             }
-        }
-
-        gameData.hiddenWord = updatedWord;
-        wordDisplay.textContent = gameData.hiddenWord;
-
-        if (correctGuess) {
-            gameData.correctGuesses++;
-            checkWinCondition();
+            gameData.score++;
+            console.log(`Correct guess: ${gameData.displayedWord.join(' ')}`);
         } else {
-            gameData.incorrectGuesses++;
-            guessesLeftDisplay.textContent = gameData.maxGuesses - gameData.incorrectGuesses;
-            checkLoseCondition();
+            // Incorrect guess
+            gameData.incorrectGuesses.push(guess);
+            console.log(`Incorrect guess: ${gameData.incorrectGuesses.join(', ')}`);
+        }
+
+        // Check for win or loss
+        if (gameData.displayedWord.join('') === gameData.chosenWord) {
+            gameArea.innerHTML += `<p>You won! The word was: ${gameData.chosenWord}</p>`;
+            scoreArea.innerHTML = `Score: ${gameData.score}`;
+        } else if (gameData.incorrectGuesses.length >= gameData.maxIncorrectGuesses) {
+            gameArea.innerHTML += `<p>Game over! The word was: ${gameData.chosenWord}</p>`;
+            scoreArea.innerHTML = `Score: ${gameData.score}`;
+        } else {
+            gameArea.innerHTML = `
+                <p>Word to guess: ${gameData.displayedWord.join(' ')}</p>
+                <input type="text" id="guessInput" maxlength="1" />
+                <button id="guessButton">Guess Letter</button>
+                <p>Incorrect Guesses: ${gameData.incorrectGuesses.join(', ')}</p>
+                <p>Max Incorrect Guesses: ${gameData.maxIncorrectGuesses}</p>
+            `;
         }
     }
-
-    function checkWinCondition() {
-        if (gameData.hiddenWord === gameData.currentWord) {
-            gameResultDisplay.textContent = 'Congratulations, you guessed the word!';
-            guessLetterButton.disabled = true;
-        }
-    }
-
-    function checkLoseCondition() {
-        if (gameData.incorrectGuesses >= gameData.maxGuesses) {
-            gameResultDisplay.textContent = 'You lost, too many incorrect guesses!';
-            guessLetterButton.disabled = true;
-        }
-    }
-
-    rollDiceButton.addEventListener('click', rollDice);
-    guessLetterButton.addEventListener('click', handleGuess);
 })();
+
 
 
