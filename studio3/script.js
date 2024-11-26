@@ -10,20 +10,20 @@
     const maxAttempts = 6;
 
     const wordInput = document.getElementById("word-input");
-    const startHangmanButton = document.getElementById("start-hangman");
+    const startGameButton = document.getElementById("start-game");
     const setupPhase = document.getElementById("setup-phase");
     const gameArea = document.getElementById("game");
     const hiddenWordDisplay = document.getElementById("hidden-word");
     const hangmanImage = document.getElementById("hangman-image");
     const guessInput = document.getElementById("guess");
-    const submitButton = document.getElementById("submit-guess");
+    const submitButton = document.getElementById("submit");
     const usedLettersDisplay = document.getElementById("letters");
     const feedback = document.getElementById("feedback");
 
     let startingPlayer = localStorage.getItem("startingPlayer") === "1" ? "2" : "1";
     localStorage.setItem("startingPlayer", startingPlayer);
 
-    startHangmanButton.addEventListener("click", () => {
+    startGameButton.addEventListener("click", () => {
         wordToGuess = wordInput.value.trim().toLowerCase();
         if (wordToGuess === "") {
             feedback.textContent = "Please enter a valid word!";
@@ -90,7 +90,7 @@
     }
 
     /* ------------------ Pig Dice Game ------------------ */
-    const startPigGameButton = document.querySelector("#startgame");
+    const startPigGameButton = document.querySelector("#start-pig-game");
     const gameControl = document.querySelector("#gamecontrol");
     const game = document.querySelector("#game");
     const score = document.querySelector("#score");
@@ -104,9 +104,10 @@
         roll2: 0,
         rollSum: 0,
         index: 0,
-        gameEnd: 30,
+        gameEnd: 29,
     };
 
+    // Button to start the Pig Dice game
     startPigGameButton.addEventListener("click", function () {
         gameControl.innerHTML = '<h2>The Game Has Started!</h2>';
         gameControl.innerHTML += '<button id="quit">Quit</button>';
@@ -166,7 +167,6 @@
         }
     }
 })();
-
 
 
 
