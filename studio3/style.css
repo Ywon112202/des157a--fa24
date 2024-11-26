@@ -1,4 +1,4 @@
-/* General Body Styling */
+
 body {
     font-family: 'Arial', sans-serif;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
-/* Game Container Styling */
+
 #game-container {
     background-color: #ffffff;
     padding: 20px;
@@ -25,15 +25,15 @@ body {
     animation: fadeIn 0.5s ease-out; 
 }
 
-/* Title Styling */
+
 h1 {
-    font-size: 1.8em; /* Reduced font size */
+    font-size: 1.8em; 
     color: #333;
     margin-bottom: 15px;
     font-family: 'Roboto', sans-serif; 
 }
 
-/* Player Sections Styling */
+
 #player1, #player2 {
     background-color: #ecf0f1; 
     padding: 15px;
@@ -48,19 +48,19 @@ h1 {
 }
 
 #player1 h2, #player2 h2 {
-    font-size: 1.4em; /* Smaller font size */
+    font-size: 1.4em; 
     color: #3498db; 
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-/* Dice Container Styling */
+
 #dice-container {
     margin-bottom: 20px;
 }
 
 #dice-result {
-    font-size: 1.2em; /* Reduced font size */
+    font-size: 1.2em; 
     font-weight: bold;
     color: #2c3e50; 
     margin-top: 10px;
@@ -68,10 +68,10 @@ h1 {
     animation: bounce 0.5s ease-out; 
 }
 
-/* Buttons Styling */
+
 button {
-    padding: 10px 20px; /* Reduced button size */
-    font-size: 1em; /* Reduced font size */
+    padding: 10px 20px; 
+    font-size: 1em; 
     cursor: pointer;
     border: none;
     background-color: #3498db; 
@@ -97,7 +97,7 @@ button:focus {
 
 input {
     padding: 8px;
-    font-size: 1em; /* Reduced font size */
+    font-size: 1em; 
     border: 2px solid #3498db;
     border-radius: 8px;
     margin-top: 10px;
@@ -111,40 +111,40 @@ input:focus {
     outline: none;
 }
 
-/* Game Result Styling */
+
 #game-result, #game-result-player1, #game-result-player2 {
     margin-top: 20px;
-    font-size: 1.2em; /* Smaller font size */
+    font-size: 1.2em; 
     color: #e74c3c; 
     font-weight: bold;
 }
 
-/* Scoreboard Styling */
+
 #scoreboard {
     margin-top: 20px;
     padding: 10px;
     border-top: 2px solid #ddd;
-    font-size: 1em; /* Smaller font size */
+    font-size: 1em; 
     color: #2c3e50; 
     font-weight: bold;
 }
 
 #scoreboard h3 {
-    font-size: 0.9em; /* Smaller heading size */
+    font-size: 0.9em; 
     margin-bottom: 10px;
 }
 
 #scoreboard p {
-    font-size: 0.9em; /* Smaller scores */
+    font-size: 0.9em; 
     color: #27ae60; 
     margin: 5px 0;
 }
 
-/* Footer Styling */
+
 footer {
     position: absolute;
     bottom: 20px;
-    font-size: 12px; /* Smaller font size */
+    font-size: 12px; 
     color: #777;
     text-align: center;
     width: 100%;
@@ -152,7 +152,7 @@ footer {
     padding: 5px;
 }
 
-/* Responsive Styling */
+
 @media (max-width: 600px) {
     #game-container {
         padding: 15px;
@@ -160,12 +160,12 @@ footer {
     }
 
     h1 {
-        font-size: 1.6em; /* Smaller title on smaller screens */
+        font-size: 1.6em; 
     }
 
     button {
         padding: 8px 16px;
-        font-size: 0.9em; /* Smaller button font size */
+        font-size: 0.9em; 
     }
 
     input {
@@ -174,7 +174,7 @@ footer {
     }
 
     #scoreboard {
-        font-size: 0.9em; /* Adjusted for smaller screens */
+        font-size: 0.9em; 
     }
 
     footer {

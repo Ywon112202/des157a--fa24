@@ -2,6 +2,11 @@
     'use strict';
     console.log('reading js');
 
+    // Audio elements
+    const diceRollSound = document.getElementById('dice-roll-sound');
+    const winSound = document.getElementById('win-sound');
+    const loseSound = document.getElementById('lose-sound');
+
     const rollDiceButtonPlayer1 = document.querySelector('#roll-btn-player1');
     const rollDiceButtonPlayer2 = document.querySelector('#roll-btn-player2');
     const guessInputPlayer1 = document.querySelector('#guess-input-player1');
@@ -32,7 +37,6 @@
     function rollDice(player) {
         const roll = Math.floor(Math.random() * 6) + 1;
 
-        // Update dice image and roll result
         if (player === 1) {
             diceResultPlayer1.textContent = `Player 1 rolled a ${roll}!`;
             updateDiceImage(diceImagePlayer1, roll);
@@ -42,12 +46,12 @@
         }
 
         gameData.maxGuesses = roll;
-        gameData.incorrectGuesses = 0; // Reset incorrect guesses for new round
+        gameData.incorrectGuesses = 0;
 
+        diceRollSound.play();  // Play the dice roll sound
         startGame(player);
     }
 
-    // Update dice image based on roll
     function updateDiceImage(diceImage, roll) {
         diceImage.src = `images/dice-${roll}.png`;
         diceImage.alt = `Dice showing ${roll}`;
@@ -76,7 +80,7 @@
         const resultText = player === 1 ? diceResultPlayer1 : diceResultPlayer2;
 
         const letter = guessInput.value.toLowerCase();
-        guessInput.value = ''; // Clear input field
+        guessInput.value = ''; 
 
         if (letter.length !== 1 || !/[a-zA-Z]/.test(letter)) {
             alert("Please enter a valid letter.");
@@ -123,9 +127,11 @@
 
         if (gameData.hiddenWord === gameData.currentWord) {
             gameResult.textContent = `Congratulations, Player ${player} wins!`;
+            winSound.play();  // Play win sound
             endGame();
         } else if (gameData.incorrectGuesses >= gameData.maxGuesses) {
             gameResult.textContent = `Sorry, Player ${player} loses!`;
+            loseSound.play();  // Play lose sound
             endGame();
         } else {
             switchPlayer();
@@ -157,4 +163,3 @@
         if (e.key === 'Enter') handleGuess(2);
     });
 })();
-
