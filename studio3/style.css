@@ -1,120 +1,97 @@
-
-/* Reset and Box Sizing */
+/* Reset default browser styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styles */
+/* Page Layout */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #f4f4f4;
-    color: #222;
+    background-color: #f8f9fa;
+    color: #333;
     text-align: center;
-    line-height: 1.6;
-    padding: 20px;
 }
 
-/* Header Styles */
+/* Header Styling */
 header {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 h1 {
-    font-size: 2.8rem;
-    margin-bottom: 15px;
-    color: #007bff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 p {
     font-size: 1.2rem;
-    color: #555;
 }
 
-/* Game Container */
+/* Game Area */
 #game {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
 }
 
-/* Hangman Image */
 #hangman img {
-    width: 220px;
+    width: 200px;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Word Display */
 #word-display {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #444;
 }
 
-/* Input Area */
 #input-area {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
-/* Input Field */
 #guess {
-    padding: 8px;
-    font-size: 1.1rem;
+    padding: 5px;
+    font-size: 1rem;
     text-align: center;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    width: 150px;
-    transition: border-color 0.3s;
 }
 
-#guess:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-/* Buttons */
 button {
-    padding: 12px 25px;
+    padding: 10px 20px;
     font-size: 1rem;
     background-color: #007bff;
-    color: #fff;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: #0056b3;
-    transform: scale(1.05);
 }
 
-button:active {
-    background-color: #003f8f;
+/* Footer Styling */
+footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
 }
 
-
-button:focus, #guess:focus {
-    outline: 2px dashed #0056b3;
-    outline-offset: 3px;
+footer a {
+    color: #007bff;
+    text-decoration: none;
 }
 
+footer a:hover {
+    text-decoration: underline;
+}
 
 
 

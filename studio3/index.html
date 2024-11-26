@@ -5,39 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <title>Games</title>
+    <title>Two-Player Hangman</title>
 </head>
 <body>
-
-    <div id="setup-phase">
-        <input type="text" id="word-input" placeholder="Enter word to guess">
-        <button id="start-game">Start Hangman Game</button>
-    </div>
-
-
-    <div id="game" style="display:none;">
-        <p id="hidden-word"></p>
-        <input type="text" id="guess" maxlength="1" placeholder="Guess a letter">
-        <button id="submit">Submit Guess</button>
-        <p id="letters">Used Letters:</p>
-        <p id="feedback"></p>
-        <img id="hangman-image" src="images/step0.png" alt="Hangman">
-    </div>
-
-
-    <div id="pig-setup">
-        <button id="start-pig-game">Start Pig Dice Game</button>
-    </div>
-
-
-    <div id="gamecontrol"></div>
-
-
-    <div id="game" style="display:none;">
-        <p id="score"></p>
-        <div id="actions"></div>
-    </div>
-
-    <script src="games.js"></script>
+    <header>
+        <h1>Two-Player Hangman</h1>
+        <p id="turn-indicator"></p>
+    </header>
+    <main>
+        <!-- Word Setup Phase -->
+        <div id="setup-phase">
+            <label id="word-prompt" for="word-input">Player 1, enter a word:</label>
+            <input type="text" id="word-input">
+            <button id="start-game">Start Game</button>
+        </div>
+        <!-- Game Phase -->
+        <div id="game" style="display: none;">
+            <!-- Hangman Image Container -->
+            <div id="hangman">
+                <div id="hangman-image-container">
+                    <img id="hangman-image" src="images/step0.png" alt="Hangman game illustration">
+                </div>
+            </div>
+            <!-- Word Display -->
+            <div id="word-display">
+                <p id="hidden-word">_ _ _ _</p>
+            </div>
+            <!-- Input Area -->
+            <div id="input-area">
+                <label for="guess">Player 2, enter a letter:</label>
+                <input type="text" id="guess" maxlength="1">
+                <button id="submit">Guess</button>
+            </div>
+            <!-- Used Letters -->
+            <div id="used-letters">
+                <p>Used Letters: <span id="letters"></span></p>
+            </div>
+            <!-- Feedback -->
+            <div id="feedback"></div>
+        </div>
+    </main>
+    <footer>
+       
+    </footer>
+    
 </body>
 </html>
+

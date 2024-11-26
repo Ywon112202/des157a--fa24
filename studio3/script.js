@@ -1,185 +1,85 @@
+// script.js
 (function () {
     "use strict";
-    console.log("reading js");
+    console.log("Reading JS");
 
-    /* ------------------ Hangman Game ------------------ */
-    let wordToGuess = "";
+    // Game variables
+    const words = ["javascript", "hangman", "function", "variable", "closure"];
+    let chosenWord = "";
     let hiddenWord = [];
     let usedLetters = [];
-    let attempts = 0;
-    const maxAttempts = 6;
+    let incorrectGuesses = 0;
+    const maxGuesses = 6;
 
-    const wordInput = document.getElementById("word-input");
-    const startGameButton = document.getElementById("start-game");
-    const setupPhase = document.getElementById("setup-phase");
-    const gameArea = document.getElementById("game");
-    const hiddenWordDisplay = document.getElementById("hidden-word");
+    // DOM Elements
     const hangmanImage = document.getElementById("hangman-image");
+    const hiddenWordDisplay = document.getElementById("hidden-word");
     const guessInput = document.getElementById("guess");
     const submitButton = document.getElementById("submit");
     const usedLettersDisplay = document.getElementById("letters");
     const feedback = document.getElementById("feedback");
 
-    // Start Hangman Game
-    startGameButton.addEventListener("click", () => {
-        wordToGuess = wordInput.value.trim().toLowerCase();
-        if (wordToGuess === "") {
-            feedback.textContent = "Please enter a valid word!";
-            return;
-        }
-        setupPhase.style.display = "none";
-        gameArea.style.display = "block";
-        initializeGame();
-    });
-
+    // Initialize Game
     function initializeGame() {
-        hiddenWord = Array(wordToGuess.length).fill("_");
-        hiddenWordDisplay.textContent = hiddenWord.join(" ");
+        chosenWord = words[Math.floor(Math.random() * words.length)];
+        hiddenWord = Array(chosenWord.length).fill("_");
         usedLetters = [];
-        attempts = 0;
-        hangmanImage.src = `images/step0.png`;
-        updateUsedLetters();
-        feedback.textContent = ""; 
+        incorrectGuesses = 0;
+        updateDisplay();
     }
 
-    submitButton.addEventListener("click", () => {
-        const guess = guessInput.value.trim().toLowerCase();
-        guessInput.value = "";
-        if (guess === "" || usedLetters.includes(guess) || guess.length !== 1) {
-            feedback.textContent = "Invalid or repeated letter!";
+    // Update Display
+    function updateDisplay() {
+        hiddenWordDisplay.textContent = hiddenWord.join(" ");
+        usedLettersDisplay.textContent = usedLetters.join(", ");
+        hangmanImage.src = `images/step${incorrectGuesses}.png`;
+        feedback.textContent = "";
+    }
+
+    // Handle Guess
+    function handleGuess(letter) {
+        if (usedLetters.includes(letter) || hiddenWord.includes(letter)) {
+            feedback.textContent = "Letter already used!";
             return;
         }
+        usedLetters.push(letter);
 
-        usedLetters.push(guess);
-        updateUsedLetters();
-
-        if (wordToGuess.includes(guess)) {
-            updateHiddenWord(guess);
-            if (!hiddenWord.includes("_")) {
-                feedback.textContent = `You win! The word was "${wordToGuess}"`;
-                endGame();
+        if (chosenWord.includes(letter)) {
+            for (let i = 0; i < chosenWord.length; i++) {
+                if (chosenWord[i] === letter) {
+                    hiddenWord[i] = letter;
+                }
             }
         } else {
-            attempts++;
-            hangmanImage.src = `images/step${attempts}.png`;
-            if (attempts >= maxAttempts) {
-                feedback.textContent = `Game over! The word was "${wordToGuess}"`;
-                endGame();
-            }
+            incorrectGuesses++;
         }
+
+        checkGameState();
+        updateDisplay();
+    }
+
+    // Check Game State
+    function checkGameState() {
+        if (hiddenWord.join("") === chosenWord) {
+            feedback.textContent = "You Win! 🎉";
+            submitButton.disabled = true;
+        } else if (incorrectGuesses >= maxGuesses) {
+            feedback.textContent = `Game Over! The word was "${chosenWord}".`;
+            submitButton.disabled = true;
+        }
+    }
+
+    // Event Listeners
+    submitButton.addEventListener("click", () => {
+        const guess = guessInput.value.toLowerCase();
+        if (guess && guess.length === 1 && /^[a-z]$/.test(guess)) {
+            handleGuess(guess);
+        }
+        guessInput.value = "";
+        guessInput.focus();
     });
 
-    function updateHiddenWord(letter) {
-        for (let i = 0; i < wordToGuess.length; i++) {
-            if (wordToGuess[i] === letter) {
-                hiddenWord[i] = letter;
-            }
-        }
-        hiddenWordDisplay.textContent = hiddenWord.join(" ");
-    }
-
-    function updateUsedLetters() {
-        usedLettersDisplay.textContent = usedLetters.join(", ");
-    }
-
-    function endGame() {
-        guessInput.disabled = true;
-        submitButton.disabled = true;
-    }
-
-    /* ------------------ Pig Dice Game ------------------ */
-    const startPigGameButton = document.querySelector("#start-pig-game");
-    const gameControl = document.querySelector("#gamecontrol");
-    const pigGameArea = document.querySelector("#game");
-    const score = document.querySelector("#score");
-    const actionArea = document.querySelector("#actions");
-
-    const gameData = {
-        dice: ["images/1die.jpg", "images/2die.jpg", "images/3die.jpg", "images/4die.jpg", "images/5die.jpg", "images/6die.jpg"],
-        players: ["Player 1", "Player 2"],
-        score: [0, 0],
-        roll1: 0,
-        roll2: 0,
-        rollSum: 0,
-        index: 0,
-        gameEnd: 29,
-    };
-
-
-    startPigGameButton.addEventListener("click", function () {
-        gameControl.innerHTML = '<h2>The Game Has Started!</h2>';
-        gameControl.innerHTML += '<button id="quit">Quit</button>';
-        document.querySelector("#quit").addEventListener("click", function () {
-            location.reload();
-        });
-
-        gameData.index = Math.round(Math.random());
-        setUpTurn();
-    });
-
-    function setUpTurn() {
-        pigGameArea.innerHTML = `<p>Roll the dice for ${gameData.players[gameData.index]}</p>`;
-        actionArea.innerHTML = '';  
-        actionArea.innerHTML += '<button id="roll">Roll the Dice</button>';
-        actionArea.innerHTML += '<button id="pass">Pass</button>';
-        document.getElementById("roll").addEventListener("click", throwDice);
-        document.getElementById("pass").addEventListener("click", function () {
-            gameData.index = gameData.index ? 0 : 1;
-            setUpTurn();
-        });
-    }
-
-    function throwDice() {
-        actionArea.innerHTML = "";
-        gameData.roll1 = Math.floor(Math.random() * 6) + 1;
-        gameData.roll2 = Math.floor(Math.random() * 6) + 1;
-        pigGameArea.innerHTML = `<p>Rolling dice for ${gameData.players[gameData.index]}...</p>`;
-        pigGameArea.innerHTML += `<img src="${gameData.dice[gameData.roll1 - 1]}">
-                                  <img src="${gameData.dice[gameData.roll2 - 1]}">`;
-
-        gameData.rollSum = gameData.roll1 + gameData.roll2;
-
-        if (gameData.roll1 === 1 && gameData.roll2 === 1) {
-            pigGameArea.innerHTML += "<p>Snake eyes! Score reset to zero!</p>";
-            gameData.score[gameData.index] = 0;
-            gameData.index = gameData.index ? 0 : 1;
-            setTimeout(setUpTurn, 2000);
-        } else if (gameData.roll1 === 1 || gameData.roll2 === 1) {
-            pigGameArea.innerHTML += `<p>Rolled a 1! Switching turns to ${gameData.players[gameData.index ? 0 : 1]}</p>`;
-            gameData.index = gameData.index ? 0 : 1;
-            setTimeout(setUpTurn, 2000);
-        } else {
-            gameData.score[gameData.index] += gameData.rollSum;
-            actionArea.innerHTML = '<button id="rollagain">Roll Again</button><button id="pass">Pass</button>';
-            document.getElementById("rollagain").addEventListener("click", throwDice);
-            document.getElementById("pass").addEventListener("click", function () {
-                gameData.index = gameData.index ? 0 : 1;
-                setUpTurn();
-            });
-        }
-
-        checkWinningCondition();
-    }
-
-    function checkWinningCondition() {
-        if (gameData.score[gameData.index] >= gameData.gameEnd) {
-            score.innerHTML = `<h2>${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!</h2>`;
-            actionArea.innerHTML = "";
-            document.querySelector("#quit")
-
-            actionArea.innerHTML = "";
-            document.querySelector("#quit").disabled = false;
-            gameControl.innerHTML += "<button id='newGame'>Start a New Game</button>";
-            document.querySelector("#newGame").addEventListener("click", function () {
-                location.reload();
-            });
-        } else {
-            score.innerHTML = `<p>Current Score: ${gameData.players[0]}: ${gameData.score[0]} | ${gameData.players[1]}: ${gameData.score[1]}</p>`;
-        }
-    }
-
-   
-    gameData.index = Math.round(Math.random());  
-    setUpTurn();  
+    // Start the Game
+    initializeGame();
 })();
 
