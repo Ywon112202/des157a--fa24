@@ -23,7 +23,8 @@
     let startingPlayer = localStorage.getItem("startingPlayer") === "1" ? "2" : "1";
     localStorage.setItem("startingPlayer", startingPlayer);
 
-    startGameButton.addEventListener("click", () => {
+    // Start game button for Hangman
+    startGameButton.addEventListener("click", function() {
         wordToGuess = wordInput.value.trim().toLowerCase();
         if (wordToGuess === "") {
             feedback.textContent = "Please enter a valid word!";
@@ -44,7 +45,8 @@
         feedback.textContent = ""; // Clear previous feedback
     }
 
-    submitButton.addEventListener("click", () => {
+    // Submit button for guessing a letter
+    submitButton.addEventListener("click", function () {
         const guess = guessInput.value.trim().toLowerCase();
         guessInput.value = "";
         if (guess === "" || usedLetters.includes(guess) || guess.length !== 1) {
