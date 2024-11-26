@@ -16,17 +16,18 @@
         <section id="objectives">
             <h2>Game Objectives</h2>
             <ul>
-                <li>**Hangman**: Player 1 sets the word, and Player 2 guesses it. The starting player alternates with every game refresh.</li>
-                <li>**Pig Dice Game**: Roll the dice to reach 30 points or more. Beware of rolling a "1" or "snake eyes"!</li>
+                <li><strong>Hangman</strong>: Player 1 sets the word, and Player 2 guesses it. The starting player alternates with every game refresh.</li>
+                <li><strong>Pig Dice Game</strong>: Roll the dice to reach 30 points or more. Beware of rolling a "1" or "snake eyes"!</li>
             </ul>
         </section>
 
+        <!-- Hangman Section -->
         <section id="hangman-section">
             <h2>Hangman</h2>
             <div id="setup-phase">
                 <label for="word-input">Player 1, enter a word:</label>
-                <input type="text" id="word-input">
-                <button id="start-game">Start Game</button>
+                <input type="text" id="word-input" placeholder="Enter the word">
+                <button id="start-hangman">Start Game</button>
             </div>
             <div id="game" style="display: none;">
                 <div id="hangman">
@@ -37,8 +38,8 @@
                 </div>
                 <div id="input-area">
                     <label for="guess">Player 2, enter a letter:</label>
-                    <input type="text" id="guess" maxlength="1">
-                    <button id="submit">Guess</button>
+                    <input type="text" id="guess" maxlength="1" placeholder="Enter a letter">
+                    <button id="submit-guess">Guess</button>
                 </div>
                 <div id="used-letters">
                     <p>Used Letters: <span id="letters"></span></p>
@@ -47,13 +48,23 @@
             </div>
         </section>
 
+        <!-- Pig Dice Game Section -->
         <section id="pig-dice-section">
             <h2>Pig Dice Game</h2>
             <button id="startgame">Start Pig Dice Game</button>
-            <div id="gamecontrol"></div>
-            <div id="game"></div>
-            <div id="score"></div>
-            <div id="actions"></div>
+            <div id="gamecontrol">
+                <!-- Game controls and current turn status -->
+            </div>
+            <div id="game">
+                <!-- Dice roll and results -->
+            </div>
+            <div id="score">
+                <p>Player 1 Score: <span id="player1-score">0</span></p>
+                <p>Player 2 Score: <span id="player2-score">0</span></p>
+            </div>
+            <div id="actions">
+                <!-- Action buttons like Roll Dice or Hold -->
+            </div>
         </section>
     </main>
     <footer>
@@ -61,3 +72,4 @@
     </footer>
 </body>
 </html>
+
