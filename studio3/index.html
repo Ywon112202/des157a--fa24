@@ -3,23 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Hangman</title>
+    <title>Dice Hangman</title>
     <link href="styles.css" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Digital Hangman</h1>
-    <div id="gameArea">
-        <p>Click "Start Game" to begin the game!</p>
-        <button id="startGameButton">Start Game</button>
-        <div id="game">
-            <!-- Game content will appear here -->
-        </div>
-        <div id="score">
-            <!-- Game score will appear here -->
-        </div>
+    <h1>Dice Hangman Game</h1>
+    <p>Roll the dice to determine the difficulty, and guess the word!</p>
+
+    <div id="dice-container">
+        <button id="roll-dice">Roll Dice</button>
+        <p id="dice-result">Roll the dice to begin!</p>
     </div>
+
+    <div id="game-container">
+        <h2>Word to Guess: <span id="word-display"></span></h2>
+        <p>Incorrect guesses left: <span id="guesses-left"></span></p>
+
+        <div id="letters-container">
+            <input type="text" id="letter-guess" maxlength="1" />
+            <button id="guess-letter">Guess Letter</button>
+        </div>
+
+        <div id="game-result"></div>
+    </div>
+
+    <footer>
+        <p>Created by [Your Name].</p>
+    </footer>
 </body>
 </html>
+
 
 

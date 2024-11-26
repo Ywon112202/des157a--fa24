@@ -1,50 +1,95 @@
-/* Basic styles for the game */
+/* General Body Styles */
 body {
-    font-family: Arial, sans-serif;
-    color: #333;
-    padding: 50px;
-    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #f0f8ff; /* Soft background color */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 100vh; /* Full viewport height */
     text-align: center;
 }
 
-h1 {
-    font-size: 2em;
-    color: #2C3E50;
-}
-
-#gameArea {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px auto;
+/* Game Container Styling */
+#game-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     width: 80%;
-    max-width: 600px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Maximum width of the game container */
+    margin: 20px;
+    text-align: center;
 }
 
+/* Title Styling */
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif; /* Cleaner font for the header */
+}
+
+/* Dice Container Styling */
+#dice-container {
+    margin-bottom: 30px;
+}
+
+#dice-result {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2c3e50; /* Dark color for text */
+    margin-top: 10px;
+}
+
+/* Buttons Styling */
 button {
-    padding: 15px 30px;
-    font-size: 1em;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    padding: 12px 30px;
+    font-size: 1.2em;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border: none;
+    background-color: #3498db; /* Vibrant blue */
+    color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #2980b9; /* Darker shade when hovered */
 }
 
-#game {
-    margin-top: 20px;
+button:disabled {
+    background-color: #bdc3c7; /* Disabled button color */
+    cursor: not-allowed;
 }
 
-#score {
-    margin-top: 30px;
+/* Input Field Styling */
+input {
+    padding: 10px;
     font-size: 1.2em;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 50px; /* Fixed width for letter input */
+    text-align: center;
+}
+
+/* Game Result Styling */
+#game-result {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #e74c3c; /* Red color for the result */
     font-weight: bold;
+}
+
+/* Footer Styling */
+footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 14px;
+    color: #777;
+    text-align: center;
 }
 
 
