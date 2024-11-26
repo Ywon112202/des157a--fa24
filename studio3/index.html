@@ -5,74 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <title>Two Games in One</title>
+    <title>Games</title>
 </head>
 <body>
-    <header>
-        <h1>Two-Player Hangman & Pig Dice Game</h1>
-        <p>Challenge your friends with Hangman or test your luck in the Pig Dice game!</p>
-    </header>
-    <main>
-        <section id="objectives">
-            <h2>Game Objectives</h2>
-            <ul>
-                <li><strong>Hangman</strong>: Player 1 sets the word, and Player 2 guesses it. The starting player alternates with every game refresh.</li>
-                <li><strong>Pig Dice Game</strong>: Roll the dice to reach 30 points or more. Beware of rolling a "1" or "snake eyes"!</li>
-            </ul>
-        </section>
 
-        <!-- Hangman Section -->
-        <section id="hangman-section" style="display: none;">
-            <h2>Hangman</h2>
-            <div id="setup-phase">
-                <label for="word-input">Player 1, enter a word:</label>
-                <input type="text" id="word-input" placeholder="Enter the word">
-                <button id="start-hangman">Start Hangman Game</button>
-            </div>
-            <div id="game" style="display: none;">
-                <div id="hangman">
-                    <img id="hangman-image" src="images/hang2.jpg" alt="Hangman game illustration">
-                </div>
-                <div id="word-display">
-                    <p id="hidden-word">_ _ _ _</p>
-                </div>
-                <div id="input-area">
-                    <label for="guess">Player 2, enter a letter:</label>
-                    <input type="text" id="guess" maxlength="1" placeholder="Enter a letter">
-                    <button id="submit-guess">Guess</button>
-                </div>
-                <div id="used-letters">
-                    <p>Used Letters: <span id="letters"></span></p>
-                </div>
-                <div id="feedback"></div>
-            </div>
-        </section>
+    <div id="setup-phase">
+        <input type="text" id="word-input" placeholder="Enter word to guess">
+        <button id="start-game">Start Hangman Game</button>
+    </div>
 
-        <!-- Pig Dice Game Section -->
-        <section id="pig-dice-section" style="display: none;">
-            <h2>Pig Dice Game</h2>
-            <button id="start-pig-game">Start Pig Dice Game</button>
-            <div id="gamecontrol">
-                <!-- Game controls and current turn status will appear here -->
-            </div>
-            <div id="game">
-                <!-- Dice roll and results will appear here -->
-            </div>
-            <div id="score">
-                <p>Player 1 Score: <span id="player1-score">0</span></p>
-                <p>Player 2 Score: <span id="player2-score">0</span></p>
-            </div>
-            <div id="actions">
-                <!-- Actions for rolling and passing the dice will appear here -->
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>Game created with fun and learning in mind!</p>
-    </footer>
+
+    <div id="game" style="display:none;">
+        <p id="hidden-word"></p>
+        <input type="text" id="guess" maxlength="1" placeholder="Guess a letter">
+        <button id="submit">Submit Guess</button>
+        <p id="letters">Used Letters:</p>
+        <p id="feedback"></p>
+        <img id="hangman-image" src="images/step0.png" alt="Hangman">
+    </div>
+
+
+    <div id="pig-setup">
+        <button id="start-pig-game">Start Pig Dice Game</button>
+    </div>
+
+
+    <div id="gamecontrol"></div>
+
+
+    <div id="game" style="display:none;">
+        <p id="score"></p>
+        <div id="actions"></div>
+    </div>
+
+    <script src="games.js"></script>
 </body>
 </html>
-
-
-
-

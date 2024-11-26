@@ -20,9 +20,7 @@
     const usedLettersDisplay = document.getElementById("letters");
     const feedback = document.getElementById("feedback");
 
-    let startingPlayer = localStorage.getItem("startingPlayer") === "1" ? "2" : "1";
-    localStorage.setItem("startingPlayer", startingPlayer);
-
+    // Start Hangman Game
     startGameButton.addEventListener("click", () => {
         wordToGuess = wordInput.value.trim().toLowerCase();
         if (wordToGuess === "") {
@@ -41,7 +39,7 @@
         attempts = 0;
         hangmanImage.src = `images/step0.png`;
         updateUsedLetters();
-        feedback.textContent = ""; // Clear previous feedback
+        feedback.textContent = ""; 
     }
 
     submitButton.addEventListener("click", () => {
@@ -58,14 +56,14 @@
         if (wordToGuess.includes(guess)) {
             updateHiddenWord(guess);
             if (!hiddenWord.includes("_")) {
-                feedback.textContent = `Player ${startingPlayer} wins! The word was "${wordToGuess}"`;
+                feedback.textContent = `You win! The word was "${wordToGuess}"`;
                 endGame();
             }
         } else {
             attempts++;
             hangmanImage.src = `images/step${attempts}.png`;
             if (attempts >= maxAttempts) {
-                feedback.textContent = `Player ${startingPlayer === "1" ? "2" : "1"} wins! The word was "${wordToGuess}"`;
+                feedback.textContent = `Game over! The word was "${wordToGuess}"`;
                 endGame();
             }
         }
@@ -92,7 +90,7 @@
     /* ------------------ Pig Dice Game ------------------ */
     const startPigGameButton = document.querySelector("#start-pig-game");
     const gameControl = document.querySelector("#gamecontrol");
-    const game = document.querySelector("#game");
+    const pigGameArea = document.querySelector("#game");
     const score = document.querySelector("#score");
     const actionArea = document.querySelector("#actions");
 
@@ -107,7 +105,7 @@
         gameEnd: 29,
     };
 
-    // Button to start the Pig Dice game
+
     startPigGameButton.addEventListener("click", function () {
         gameControl.innerHTML = '<h2>The Game Has Started!</h2>';
         gameControl.innerHTML += '<button id="quit">Quit</button>';
@@ -120,9 +118,10 @@
     });
 
     function setUpTurn() {
-        game.innerHTML = `<p>Roll the dice for ${gameData.players[gameData.index]}</p>`;
-        actionArea.innerHTML = '<button id="roll">Roll the Dice</button>';
-        actionArea.innerHTML += '<button id="pass">Pass</button>';  // Add "Pass" button to continue the game
+        pigGameArea.innerHTML = `<p>Roll the dice for ${gameData.players[gameData.index]}</p>`;
+        actionArea.innerHTML = '';  
+        actionArea.innerHTML += '<button id="roll">Roll the Dice</button>';
+        actionArea.innerHTML += '<button id="pass">Pass</button>';
         document.getElementById("roll").addEventListener("click", throwDice);
         document.getElementById("pass").addEventListener("click", function () {
             gameData.index = gameData.index ? 0 : 1;
@@ -134,19 +133,19 @@
         actionArea.innerHTML = "";
         gameData.roll1 = Math.floor(Math.random() * 6) + 1;
         gameData.roll2 = Math.floor(Math.random() * 6) + 1;
-        game.innerHTML = `<p>Rolling dice for ${gameData.players[gameData.index]}...</p>`;
-        game.innerHTML += `<img src="${gameData.dice[gameData.roll1 - 1]}">
-                           <img src="${gameData.dice[gameData.roll2 - 1]}">`;
+        pigGameArea.innerHTML = `<p>Rolling dice for ${gameData.players[gameData.index]}...</p>`;
+        pigGameArea.innerHTML += `<img src="${gameData.dice[gameData.roll1 - 1]}">
+                                  <img src="${gameData.dice[gameData.roll2 - 1]}">`;
 
         gameData.rollSum = gameData.roll1 + gameData.roll2;
 
         if (gameData.roll1 === 1 && gameData.roll2 === 1) {
-            game.innerHTML += "<p>Snake eyes! Score reset to zero!</p>";
+            pigGameArea.innerHTML += "<p>Snake eyes! Score reset to zero!</p>";
             gameData.score[gameData.index] = 0;
             gameData.index = gameData.index ? 0 : 1;
             setTimeout(setUpTurn, 2000);
         } else if (gameData.roll1 === 1 || gameData.roll2 === 1) {
-            game.innerHTML += `<p>Rolled a 1! Switching turns to ${gameData.players[gameData.index ? 0 : 1]}</p>`;
+            pigGameArea.innerHTML += `<p>Rolled a 1! Switching turns to ${gameData.players[gameData.index ? 0 : 1]}</p>`;
             gameData.index = gameData.index ? 0 : 1;
             setTimeout(setUpTurn, 2000);
         } else {
@@ -166,9 +165,21 @@
         if (gameData.score[gameData.index] >= gameData.gameEnd) {
             score.innerHTML = `<h2>${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!</h2>`;
             actionArea.innerHTML = "";
-            document.querySelector("#quit").innerHTML = "Start New Game";
+            document.querySelector("#quit")
+
+            actionArea.innerHTML = "";
+            document.querySelector("#quit").disabled = false;
+            gameControl.innerHTML += "<button id='newGame'>Start a New Game</button>";
+            document.querySelector("#newGame").addEventListener("click", function () {
+                location.reload();
+            });
         } else {
-            score.innerHTML = `<p>${gameData.players[0]}: ${gameData.score[0]} <br> ${gameData.players[1]}: ${gameData.score[1]}</p>`;
+            score.innerHTML = `<p>Current Score: ${gameData.players[0]}: ${gameData.score[0]} | ${gameData.players[1]}: ${gameData.score[1]}</p>`;
         }
     }
+
+   
+    gameData.index = Math.round(Math.random());  
+    setUpTurn();  
 })();
+
