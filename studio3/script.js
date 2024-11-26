@@ -12,6 +12,8 @@
     const gameResultPlayer2 = document.querySelector('#game-result-player2');
     const scorePlayer1 = document.querySelector('#score-player1');
     const scorePlayer2 = document.querySelector('#score-player2');
+    const diceImagePlayer1 = document.querySelector('#dice-img-player1'); // Dice image for Player 1
+    const diceImagePlayer2 = document.querySelector('#dice-img-player2'); // Dice image for Player 2
 
     let currentPlayer = 1; // Track the current player (1 or 2)
     let score1 = 0;
@@ -28,11 +30,18 @@
 
     function rollDice(player) {
         const roll = Math.floor(Math.random() * 6) + 1; // Dice roll between 1 and 6
+        const diceImage = player === 1 ? diceImagePlayer1 : diceImagePlayer2;
+        const diceResultText = player === 1 ? diceResultPlayer1 : diceResultPlayer2;
+
+        // Update the dice result text
         if (player === 1) {
-            diceResultPlayer1.textContent = `Player 1 rolled a ${roll}!`;
+            diceResultText.textContent = `Player 1 rolled a ${roll}!`;
         } else {
-            diceResultPlayer2.textContent = `Player 2 rolled a ${roll}!`;
+            diceResultText.textContent = `Player 2 rolled a ${roll}!`;
         }
+
+        // Update the dice image based on the roll (dice1.png, dice2.png, ...)
+        diceImage.src = `dice${roll}.png`; // Assumes dice images are named dice1.png, dice2.png, etc.
 
         // Change maxGuesses based on roll (e.g., if you roll 6, you get more incorrect guesses)
         gameData.maxGuesses = roll;
@@ -152,7 +161,3 @@
         }
     });
 })();
-
-
-
-
