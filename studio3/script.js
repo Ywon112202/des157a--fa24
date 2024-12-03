@@ -53,7 +53,7 @@
     }
 
     function updateDiceImage(diceImage, roll) {
-        diceImage.src = `image/dice${roll}.png`;
+        diceImage.src = `image/dice${roll}.jpg`;
         diceImage.alt = `Dice showing ${roll}`;
     }
 
