@@ -10,18 +10,14 @@
             return;
         }
 
-
         const sliderWidth = sliderContent.scrollWidth;
         document.documentElement.style.setProperty('--sliderwidth', `${sliderWidth}px`);
 
-  
         const cloned = sliderContent.cloneNode(true);
-        cloned.className = "b"; 
+        cloned.className = "b";
         document.querySelector('.slider').appendChild(cloned);
 
-
         document.querySelector('.slider').classList.add("animate");
-
 
         const modal = document.querySelector('.modal');
         const modalContent = document.querySelector('.modal-content');
@@ -32,24 +28,21 @@
         closeButton.textContent = 'X';
         modal.appendChild(closeButton);
 
-
         const images = document.querySelectorAll('.image-container .image');
         images.forEach(image => {
-            image.addEventListener('click', function() {
-                modal.style.display = 'block';
+            image.addEventListener('click', function () {
+                modal.style.display = 'flex'; // Use 'flex' for centering
                 modalContent.src = image.src;
                 const descriptionText = image.closest('.image-container').querySelector('.description').textContent;
                 modalDescription.textContent = descriptionText;
             });
         });
 
-
-        closeButton.addEventListener('click', function() {
+        closeButton.addEventListener('click', function () {
             modal.style.display = 'none';
         });
 
-
-        window.addEventListener('click', function(event) {
+        window.addEventListener('click', function (event) {
             if (event.target === modal) {
                 modal.style.display = 'none';
             }
