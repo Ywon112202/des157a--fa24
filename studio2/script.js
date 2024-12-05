@@ -17,7 +17,27 @@
         cloned.className = "b";
         document.querySelector(".slider").appendChild(cloned);
 
-        document.querySelector(".slider").classList.add("animate");
+        const sliderElement = document.querySelector(".slider");
+        sliderElement.classList.add("animate");
+
+        // Stop and Resume Mechanism
+        const stopButton = document.createElement("button");
+        stopButton.textContent = "Pause";
+        stopButton.classList.add("slider-control");
+        document.body.appendChild(stopButton);
+
+        let isPaused = false;
+
+        stopButton.addEventListener("click", function () {
+            if (isPaused) {
+                sliderElement.classList.add("animate");
+                stopButton.textContent = "Pause";
+            } else {
+                sliderElement.classList.remove("animate");
+                stopButton.textContent = "Play";
+            }
+            isPaused = !isPaused;
+        });
 
         // Modal functionality
         const modal = document.querySelector(".modal");
