@@ -170,6 +170,34 @@ h2 {
     animation-play-state: paused !important;
 }
 
+.slider-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 50px; /* Rounded button */
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 1001;
+}
+
+.slider-control:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+    transform: scale(1.1); /* Slight scaling on hover */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.slider-control:active {
+    background-color: #388E3C; /* Even darker green on click */
+    transform: scale(0.95); /* Slight shrink on click */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow on click */
+}
 
 @media (max-width: 1024px) {
     .image-container {
@@ -210,30 +238,11 @@ h2 {
     .close {
         font-size: 20px;
     }
-}
 
-
-.slider-control {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #444;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    z-index: 1001;
-}
-
-.slider-control:hover {
-    background-color: #666;
-    transform: scale(1.1);
-}
-
-.slider-control:active {
-    background-color: #888;
-    transform: scale(0.95);
+    .slider-control {
+        padding: 6px 12px;
+        font-size: 12px;
+        bottom: 10px;
+        right: 10px;
+    }
 }

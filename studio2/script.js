@@ -59,10 +59,17 @@
             image.addEventListener("click", function () {
                 modal.style.display = "flex";
                 modal.classList.add("show");
+
+               
                 modalContent.src = image.src;
 
                 const descriptionElement = image.closest(".image-container").querySelector(".description");
                 modalDescription.textContent = descriptionElement ? descriptionElement.textContent : "No description available.";
+
+       
+                modalContent.style.margin = "0 auto";
+                modalDescription.style.margin = "10px auto";
+                modalDescription.style.textAlign = "center";
             });
         });
 
